@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
@@ -89,4 +90,12 @@ public class TitleController {
 		return titleDetails;
 	}
 
+	// Link to IMDB Site
+	@RequestMapping(value = "imdbSiteNavigate/{imdbId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ModelAndView toImdbSite(@PathVariable(value = "imdbId") String imdbId) {
+
+		String imbdSite = "http://www.imdb.com/title/" + imdbId;
+
+		return new ModelAndView("redirect:" + imbdSite);
+	}
 }
