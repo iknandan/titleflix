@@ -97,4 +97,11 @@ public class TitleRepositoryImp implements TitleRepository {
 		return ratedTitleList;
 	}
 
+	@Override
+	public Title viewTitleDetails(String id) {
+		// TODO Auto-generated method stub
+	Title existingTitle = em.find(Title.class,id);
+		return existingTitle;
+	}
+
 }

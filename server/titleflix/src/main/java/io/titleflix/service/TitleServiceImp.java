@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
+import io.titleflix.exception.TitleNotFound;
 import io.titleflix.repository.TitleRepository;
 
 @Service
@@ -116,6 +117,18 @@ public class TitleServiceImp implements TitleService {
 			return ratedTitles;
 		}
 		
+	}
+
+	@Override
+	public Title viewTitleDetails(String id) throws TitleNotFound {
+		// TODO Auto-generated method stub
+		Title  titleDetail = titleRepository.viewTitleDetails(id);
+		if(titleDetail != null){
+			return titleDetail;
+		}
+		else{
+			throw new TitleNotFound();
+		}
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
+import io.titleflix.exception.TitleNotFound;
 
 public interface TitleService {
 
@@ -22,5 +23,8 @@ public interface TitleService {
 	public List<Title> topRatedMovies() throws NoTitlesPresent;
 
 	public List<Title> topRatedSeries() throws NoTitlesPresent;
+
+	public Title viewTitleDetails(String id) throws TitleNotFound;
+
 
 }

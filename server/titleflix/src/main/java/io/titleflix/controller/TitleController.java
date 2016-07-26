@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
+import io.titleflix.exception.TitleNotFound;
 import io.titleflix.service.TitleService;
 
 @RestController
@@ -73,12 +74,19 @@ public class TitleController {
 		List<Title> ratedMovies = titleService.topRatedMovies();
 		return ratedMovies;
 	}
-	
+
 	// TOP RATED SERIES as per IMDB Rating (>=9)
-		@RequestMapping(value = "/topRatedSeries", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-		public List<Title> topRatedSeries() throws NoTitlesPresent {
-			List<Title> ratedSeries = titleService.topRatedSeries();
-			return ratedSeries;
-		}
+	@RequestMapping(value = "/topRatedSeries", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Title> topRatedSeries() throws NoTitlesPresent {
+		List<Title> ratedSeries = titleService.topRatedSeries();
+		return ratedSeries;
+	}
+
+	// View Title Details
+	@RequestMapping(value = "/viewTitleDetails/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Title viewTitleDetails(@PathVariable(value = "id") String id) throws TitleNotFound {
+		Title titleDetails = titleService.viewTitleDetails(id);
+		return titleDetails;
+	}
 
 }
