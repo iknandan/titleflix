@@ -8,4 +8,14 @@ public interface TitleRepository {
 
 	public List<Title> findAllTitles();
 
+	public List<Title> filterByType(String type);
+
+	public List<Title> filterByYear(String year);
+
+	public List<Title> sortByYear();
+
+	public List<Title> sortByImdbRating();
+
+	public List<Title> sortByImdbVotes();
+
 }
