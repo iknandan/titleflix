@@ -1,5 +1,49 @@
 package io.titleflix.repository;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import io.titleflix.entity.CommentRating;
+import io.titleflix.entity.Title;
+import io.titleflix.entity.User;
+
+@Repository
 public class CommentRateRepositoryImp implements CommentRateRepository {
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private TitleRepository titleRepository;
+	@PersistenceContext
+	private EntityManager em;
+	@Override
+	public CommentRating reviewTitle(CommentRating review) {
+		// TODO Auto-generated method stub
+		
+		String userId = review.getUserId().getId();
+		User existingUser = userRepository.findByUserId(userId);
+		System.out.println("existingUser-"+existingUser);
+		String movieId = review.getMovieId().getMovieId();
+		Title existingTitle = titleRepository.viewTitleDetails(movieId);
+		System.out.println("existingTitle-"+existingTitle);
+		review.setUserId(existingUser);
+		review.setMovieId(existingTitle);
+		em.persist(review);
+		return review;
+	}
+	@Override
+	public List<CommentRating> viewAllReviwes() {
+		// TODO Auto-generated method stub
+		
+		TypedQuery<CommentRating> reiewListQuery = em.createQuery("select r from CommentRating r",CommentRating.class);
+		List<CommentRating> reiewList =  reiewListQuery.getResultList();
+		return reiewList;
+	}
 
 }

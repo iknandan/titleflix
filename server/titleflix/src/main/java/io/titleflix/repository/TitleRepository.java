@@ -23,5 +23,7 @@ public interface TitleRepository {
 	public List<Title> topRatedSeries();
 
 	public Title viewTitleDetails(String id);
+	
+	
 
 }

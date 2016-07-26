@@ -66,4 +66,11 @@ public class UserRepositoryImp implements UserRepository {
 		return usersList;
 	}
 
+	@Override
+	public User findByUserId(String userId) {
+		// TODO Auto-generated method stub
+		User existingUser = em.find(User.class, userId);
+		return existingUser;
+	}
+
 }
