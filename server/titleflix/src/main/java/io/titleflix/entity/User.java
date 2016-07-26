@@ -18,7 +18,7 @@ public class User {
 	@Id
 	@GenericGenerator(name="myuuid",strategy="uuid2")
 	@GeneratedValue(generator="myuuid")
-	private String id;
+	private String Id;
 	private String userName;
 	@Column(unique=true)
 	private String email;
