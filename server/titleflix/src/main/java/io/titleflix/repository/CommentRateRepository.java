@@ -10,4 +10,6 @@ public interface CommentRateRepository {
 
 	public List<CommentRating> viewAllReviwes();
 
+	public List<CommentRating> viewReviewsTitle(String movieId);
+
 }
