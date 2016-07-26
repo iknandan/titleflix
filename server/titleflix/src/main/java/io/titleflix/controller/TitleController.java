@@ -61,11 +61,24 @@ public class TitleController {
 	}
 
 	// Sorting catalog based on IMDB Votes in Descending order
-		@RequestMapping(value = "/sortByImdbVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-		public List<Title> sortByImdbVotes() throws NoTitlesPresent {
-			List<Title> sortedTitles = titleService.sortByImdbVotes();
-			return sortedTitles;
-		}
+	@RequestMapping(value = "/sortByImdbVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Title> sortByImdbVotes() throws NoTitlesPresent {
+		List<Title> sortedTitles = titleService.sortByImdbVotes();
+		return sortedTitles;
+	}
+
+	// TOP RATED MOVIES as per IMDB Rating (>=9)
+	@RequestMapping(value = "/topRatedMovies", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Title> topRatedMovies() throws NoTitlesPresent {
+		List<Title> ratedMovies = titleService.topRatedMovies();
+		return ratedMovies;
+	}
 	
+	// TOP RATED SERIES as per IMDB Rating (>=9)
+		@RequestMapping(value = "/topRatedSeries", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+		public List<Title> topRatedSeries() throws NoTitlesPresent {
+			List<Title> ratedSeries = titleService.topRatedSeries();
+			return ratedSeries;
+		}
 
 }

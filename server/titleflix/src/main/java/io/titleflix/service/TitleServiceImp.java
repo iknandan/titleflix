@@ -90,4 +90,32 @@ public class TitleServiceImp implements TitleService {
 		}
 	}
 
+	@Override
+	public List<Title> topRatedMovies() throws NoTitlesPresent {
+		// TODO Auto-generated method stub
+		List<Title> ratedTitles = titleRepository.topRatedMovies();
+		if(ratedTitles.isEmpty()){
+			throw new NoTitlesPresent();
+		}
+		else{
+			
+			return ratedTitles;
+		}
+		
+	}
+
+	@Override
+	public List<Title> topRatedSeries() throws NoTitlesPresent {
+		// TODO Auto-generated method stub
+		List<Title> ratedTitles = titleRepository.topRatedSeries();
+		if(ratedTitles.isEmpty()){
+			throw new NoTitlesPresent();
+		}
+		else{
+			
+			return ratedTitles;
+		}
+		
+	}
+
 }

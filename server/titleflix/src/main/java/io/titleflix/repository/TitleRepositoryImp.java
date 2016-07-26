@@ -53,7 +53,7 @@ public class TitleRepositoryImp implements TitleRepository {
 	@Override
 	public List<Title> sortByYear() {
 		// TODO Auto-generated method stub
-		TypedQuery<Title> sortedQuery = em.createQuery("select t from Title t order by (t.year+0) desc",Title.class);
+		TypedQuery<Title> sortedQuery = em.createQuery("select t from Title t order by (t.year+0) desc", Title.class);
 		List<Title> sortedTitleList = sortedQuery.getResultList();
 		return sortedTitleList;
 	}
@@ -61,7 +61,8 @@ public class TitleRepositoryImp implements TitleRepository {
 	@Override
 	public List<Title> sortByImdbRating() {
 		// TODO Auto-generated method stub
-		TypedQuery<Title> sortedQuery = em.createQuery("select t from Title t order by (t.imdbRating+0) desc",Title.class);
+		TypedQuery<Title> sortedQuery = em.createQuery("select t from Title t order by (t.imdbRating+0) desc",
+				Title.class);
 		List<Title> sortedTitleList = sortedQuery.getResultList();
 		return sortedTitleList;
 	}
@@ -69,9 +70,31 @@ public class TitleRepositoryImp implements TitleRepository {
 	@Override
 	public List<Title> sortByImdbVotes() {
 		// TODO Auto-generated method stub
-		TypedQuery<Title> sortedQuery = em.createQuery("select t from Title t order by (t.imdbVotes+0) desc",Title.class);
+		TypedQuery<Title> sortedQuery = em.createQuery("select t from Title t order by (t.imdbVotes+0) desc",
+				Title.class);
 		List<Title> sortedTitleList = sortedQuery.getResultList();
 		return sortedTitleList;
+	}
+
+	@Override
+	public List<Title> topRatedMovies() {
+		// TODO Auto-generated method stub
+		TypedQuery<Title> ratedQuery = em.createQuery(
+				"select t from Title t where t.imdbRating >= 9 and t.type = 'movie' order by (t.imdbRating+0) desc ",
+				Title.class);
+		List<Title> ratedTitleList = ratedQuery.getResultList();
+		return ratedTitleList;
+	}
+
+	@Override
+	public List<Title> topRatedSeries() {
+		// TODO Auto-generated method stub
+
+		TypedQuery<Title> ratedQuery = em.createQuery(
+				"select t from Title t where t.imdbRating >= 9 and t.type = 'series' order by (t.imdbRating+0) desc ",
+				Title.class);
+		List<Title> ratedTitleList = ratedQuery.getResultList();
+		return ratedTitleList;
 	}
 
 }

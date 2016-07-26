@@ -18,4 +18,8 @@ public interface TitleRepository {
 
 	public List<Title> sortByImdbVotes();
 
+	public List<Title> topRatedMovies();
+
+	public List<Title> topRatedSeries();
+
 }
