@@ -68,4 +68,15 @@ public class CommentRateRepositoryImp implements CommentRateRepository {
 		return reviewList;
 	}
 
+	@Override
+	public void deleteReviewTitle(List<CommentRating> checkRating) {
+		// TODO Auto-generated method stub
+		
+		for (CommentRating commentRating : checkRating) {
+			em.remove(commentRating);
+		}
+		
+		
+	}
+
 }

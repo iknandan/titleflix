@@ -2,6 +2,8 @@ package io.titleflix.repository;
 
 import java.util.List;
 
+import io.titleflix.entity.CommentRating;
+import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 
 public interface TitleRepository {
@@ -29,5 +31,11 @@ public interface TitleRepository {
 	public Title createTitle(Title title);
 
 	public Title updateTitle(Title title);
+
+	public void deleteTitle(String movieId);
+
+	
+
+
 
 }

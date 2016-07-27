@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
+import io.titleflix.entity.CommentRating;
 import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 
@@ -167,5 +168,16 @@ public class TitleRepositoryImp implements TitleRepository {
 
 		return newList;
 	}
+
+	@Override
+	public void deleteTitle(String movieId) {
+		// TODO Auto-generated method stub
+		
+		Title existingTitle = viewTitleDetails(movieId);
+		em.remove(existingTitle);
+		
+	}
+
+
 
 }

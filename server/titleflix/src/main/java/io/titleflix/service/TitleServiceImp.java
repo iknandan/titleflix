@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.titleflix.entity.CommentRating;
+import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
 import io.titleflix.exception.TitleNotFound;
+import io.titleflix.repository.CommentRateRepository;
 import io.titleflix.repository.TitleRepository;
 
 @Service
@@ -17,7 +20,8 @@ public class TitleServiceImp implements TitleService {
 
 	@Autowired
 	private TitleRepository titleRepository;
-
+	@Autowired
+	private CommentRateRepository reviewRepository;
 	@Override
 	public List<Title> findAllTitles() throws NoTitlesPresent {
 		// TODO Auto-generated method stub
@@ -156,6 +160,26 @@ public class TitleServiceImp implements TitleService {
 			throw new NoTitlesPresent();
 		}
 
+	}
+
+	@Override
+	public void deleteTitle(String movieId) throws  TitleNotFound {
+		// TODO Auto-generated method stub
+		Title existingTitle = titleRepository.viewTitleDetails(movieId);
+		if(existingTitle != null){
+			List<CommentRating> checkRating = reviewRepository.viewReviewsTitle(movieId);
+			if(checkRating.isEmpty()){
+			titleRepository.deleteTitle(movieId);
+			}
+			else{
+				reviewRepository.deleteReviewTitle(checkRating);
+				//titleRepository.deleteTitle(movieId);
+			}
+		}
+		else{
+			throw new TitleNotFound();
+		}
+		
 	}
 
 }

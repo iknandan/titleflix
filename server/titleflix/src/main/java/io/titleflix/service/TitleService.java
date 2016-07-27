@@ -32,4 +32,6 @@ public interface TitleService {
 
 	public Title updateTitle(String movieId, Title title) throws NoTitlesPresent;
 
+	public void deleteTitle(String movieId) throws  TitleNotFound;
+
 }

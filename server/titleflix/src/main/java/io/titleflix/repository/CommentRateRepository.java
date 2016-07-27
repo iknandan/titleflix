@@ -12,4 +12,6 @@ public interface CommentRateRepository {
 
 	public List<CommentRating> viewReviewsTitle(String movieId);
 
+	public void deleteReviewTitle(List<CommentRating> checkRating);
+
 }

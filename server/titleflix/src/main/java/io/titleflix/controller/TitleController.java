@@ -125,4 +125,9 @@ public class TitleController {
 
 		return updateTitle;
 	}
+	// Delete a Title - Admin functionality
+	@RequestMapping(value="/deleteTitle/{movieId}",method=RequestMethod.DELETE)
+	public void deleteTitle(@PathVariable(value="movieId")String movieId) throws  TitleNotFound{
+		titleService.deleteTitle(movieId);
+	}
 }
