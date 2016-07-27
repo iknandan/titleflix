@@ -58,10 +58,9 @@ public class TitleServiceImp implements TitleService {
 	public List<Title> sortByYear() throws NoTitlesPresent {
 		// TODO Auto-generated method stub
 		List<Title> sortedTitles = titleRepository.sortByYear();
-		if(sortedTitles.isEmpty()){
+		if (sortedTitles.isEmpty()) {
 			throw new NoTitlesPresent();
-		}
-		else{
+		} else {
 			return sortedTitles;
 		}
 	}
@@ -70,23 +69,21 @@ public class TitleServiceImp implements TitleService {
 	public List<Title> sortByImdbRating() throws NoTitlesPresent {
 		// TODO Auto-generated method stub
 		List<Title> sortedTitles = titleRepository.sortByImdbRating();
-		if(sortedTitles.isEmpty()){
+		if (sortedTitles.isEmpty()) {
 			throw new NoTitlesPresent();
-		}
-		else{
+		} else {
 			return sortedTitles;
 		}
-		
+
 	}
 
 	@Override
 	public List<Title> sortByImdbVotes() throws NoTitlesPresent {
 		// TODO Auto-generated method stub
 		List<Title> sortedTitles = titleRepository.sortByImdbVotes();
-		if(sortedTitles.isEmpty()){
+		if (sortedTitles.isEmpty()) {
 			throw new NoTitlesPresent();
-		}
-		else{
+		} else {
 			return sortedTitles;
 		}
 	}
@@ -95,38 +92,35 @@ public class TitleServiceImp implements TitleService {
 	public List<Title> topRatedMovies() throws NoTitlesPresent {
 		// TODO Auto-generated method stub
 		List<Title> ratedTitles = titleRepository.topRatedMovies();
-		if(ratedTitles.isEmpty()){
+		if (ratedTitles.isEmpty()) {
 			throw new NoTitlesPresent();
-		}
-		else{
-			
+		} else {
+
 			return ratedTitles;
 		}
-		
+
 	}
 
 	@Override
 	public List<Title> topRatedSeries() throws NoTitlesPresent {
 		// TODO Auto-generated method stub
 		List<Title> ratedTitles = titleRepository.topRatedSeries();
-		if(ratedTitles.isEmpty()){
+		if (ratedTitles.isEmpty()) {
 			throw new NoTitlesPresent();
-		}
-		else{
-			
+		} else {
+
 			return ratedTitles;
 		}
-		
+
 	}
 
 	@Override
 	public Title viewTitleDetails(String id) throws TitleNotFound {
 		// TODO Auto-generated method stub
-		Title  titleDetail = titleRepository.viewTitleDetails(id);
-		if(titleDetail != null){
+		Title titleDetail = titleRepository.viewTitleDetails(id);
+		if (titleDetail != null) {
 			return titleDetail;
-		}
-		else{
+		} else {
 			throw new TitleNotFound();
 		}
 	}
@@ -134,11 +128,32 @@ public class TitleServiceImp implements TitleService {
 	@Override
 	public List<Title> filterByYear(String year, String type) throws NoTitlesPresent {
 		// TODO Auto-generated method stub
-		List<Title> filterdTitles = titleRepository.filterByYear(year,type);
+		List<Title> filterdTitles = titleRepository.filterByYear(year, type);
 		if (filterdTitles.isEmpty()) {
 			throw new NoTitlesPresent();
 		} else {
 			return filterdTitles;
+		}
+
+	}
+
+	@Override
+	public Title createTitle(Title title) {
+		// TODO Auto-generated method stub
+		System.out.println("createTitle service");
+		Title newTitle = titleRepository.createTitle(title);
+		return newTitle;
+	}
+
+	@Override
+	public Title updateTitle(String movieId, Title title) throws NoTitlesPresent {
+		// TODO Auto-generated method stub
+		Title checkTitle = titleRepository.viewTitleDetails(movieId);
+		if (checkTitle != null) {
+			Title existingTitle = titleRepository.updateTitle(title);
+			return existingTitle;
+		} else {
+			throw new NoTitlesPresent();
 		}
 
 	}

@@ -28,5 +28,8 @@ public interface TitleService {
 
 	public List<Title> filterByYear(String year, String type) throws NoTitlesPresent;
 
+	public Title createTitle(Title title);
+
+	public Title updateTitle(String movieId, Title title) throws NoTitlesPresent;
 
 }

@@ -7,6 +7,7 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,13 +46,14 @@ public class TitleController {
 		List<Title> fliteredTitles = titleService.filterByYear(year);
 		return fliteredTitles;
 	}
-	
+
 	// Filter Catalog based on year and type - Used for frontEnd.
-		@RequestMapping(value = "/filterByYearType/{year}/{type}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-		public List<Title> filterByYear(@PathVariable(value = "year") String year,@PathVariable(value="type") String type) throws NoTitlesPresent {
-			List<Title> fliteredTitles = titleService.filterByYear(year,type);
-			return fliteredTitles;
-		}
+	@RequestMapping(value = "/filterByYearType/{year}/{type}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Title> filterByYear(@PathVariable(value = "year") String year,
+			@PathVariable(value = "type") String type) throws NoTitlesPresent {
+		List<Title> fliteredTitles = titleService.filterByYear(year, type);
+		return fliteredTitles;
+	}
 
 	// Sorting catalog based on Year in Descending order
 	@RequestMapping(value = "/sortByYear", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -104,5 +106,23 @@ public class TitleController {
 		String imbdSite = "http://www.imdb.com/title/" + imdbId;
 
 		return new ModelAndView("redirect:" + imbdSite);
+	}
+
+	// Create a Title - Admin functionality
+	@RequestMapping(value = "/createTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Title createTitle(@RequestBody Title title) {
+		System.out.println("createTitle controller");
+		Title newTitle = titleService.createTitle(title);
+
+		return newTitle;
+	}
+
+	// Update a Title - Admin functionality
+	@RequestMapping(value = "/updateTitle/{movieId}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Title updateTitle(@PathVariable(value = "movieId") String movieId, @RequestBody Title title)
+			throws NoTitlesPresent {
+		Title updateTitle = titleService.updateTitle(movieId, title);
+
+		return updateTitle;
 	}
 }

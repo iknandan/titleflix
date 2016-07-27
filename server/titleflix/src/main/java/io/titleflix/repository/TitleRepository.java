@@ -25,7 +25,9 @@ public interface TitleRepository {
 	public Title viewTitleDetails(String id);
 
 	public List<Title> filterByYear(String year, String type);
-	
-	
+
+	public Title createTitle(Title title);
+
+	public Title updateTitle(Title title);
 
 }
