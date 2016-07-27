@@ -104,6 +104,16 @@ public class TitleRepositoryImp implements TitleRepository {
 		return existingTitle;
 	}
 
+	@Override
+	public List<Title> filterByYear(String year, String type) {
+		// TODO Auto-generated method stub
+		TypedQuery<Title> filterQuery = em.createQuery("select t from Title t where t.year = :pyear and t.type = :ptype ", Title.class);
+		filterQuery.setParameter("pyear", year);
+		filterQuery.setParameter("ptype", type);
+		List<Title> filteredResult = filterQuery.getResultList();
+		return filteredResult;
+	}
+
 	
 
 }

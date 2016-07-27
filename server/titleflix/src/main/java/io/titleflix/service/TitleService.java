@@ -26,5 +26,7 @@ public interface TitleService {
 
 	public Title viewTitleDetails(String id) throws TitleNotFound;
 
+	public List<Title> filterByYear(String year, String type) throws NoTitlesPresent;
+
 
 }

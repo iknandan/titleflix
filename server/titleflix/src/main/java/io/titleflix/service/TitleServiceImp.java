@@ -131,4 +131,16 @@ public class TitleServiceImp implements TitleService {
 		}
 	}
 
+	@Override
+	public List<Title> filterByYear(String year, String type) throws NoTitlesPresent {
+		// TODO Auto-generated method stub
+		List<Title> filterdTitles = titleRepository.filterByYear(year,type);
+		if (filterdTitles.isEmpty()) {
+			throw new NoTitlesPresent();
+		} else {
+			return filterdTitles;
+		}
+
+	}
+
 }

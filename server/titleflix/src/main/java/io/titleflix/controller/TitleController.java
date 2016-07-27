@@ -45,6 +45,13 @@ public class TitleController {
 		List<Title> fliteredTitles = titleService.filterByYear(year);
 		return fliteredTitles;
 	}
+	
+	// Filter Catalog based on year and type - Used for frontEnd.
+		@RequestMapping(value = "/filterByYearType/{year}/{type}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+		public List<Title> filterByYear(@PathVariable(value = "year") String year,@PathVariable(value="type") String type) throws NoTitlesPresent {
+			List<Title> fliteredTitles = titleService.filterByYear(year,type);
+			return fliteredTitles;
+		}
 
 	// Sorting catalog based on Year in Descending order
 	@RequestMapping(value = "/sortByYear", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
