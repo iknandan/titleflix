@@ -1,9 +1,15 @@
 package io.titleflix.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -40,4 +46,8 @@ public class Title {
 	private String imdbVotes;
 	private String imdbID;
 	private String type;
+	@ManyToMany(cascade={javax.persistence.CascadeType.DETACH,javax.persistence.CascadeType.MERGE,javax.persistence.CascadeType.PERSIST,javax.persistence.CascadeType.REFRESH},fetch=FetchType.EAGER)
+	@JoinTable(name="title_genre", joinColumns={@JoinColumn(name="movieId", referencedColumnName="movieId")},
+	inverseJoinColumns={@JoinColumn(name="genreId", referencedColumnName="genreId")})
+	private List<Genre> genre;
 }

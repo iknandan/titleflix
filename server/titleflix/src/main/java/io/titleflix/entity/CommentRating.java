@@ -25,9 +25,11 @@ public class CommentRating {
 	@Column(length=5000)
 	private String comment;
 	private int rating;
+	private String time;
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH},fetch=FetchType.EAGER)
 	private User userId;
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH},fetch=FetchType.EAGER)
 	private Title movieId;
+	
 	
 }
