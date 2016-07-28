@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import io.titleflix.entity.CommentRating;
 import io.titleflix.entity.Title;
 import io.titleflix.entity.User;
+import io.titleflix.exception.TitleNotFound;
+import io.titleflix.exception.UserNotFound;
 
 @Repository
 public class CommentRateRepositoryImp implements CommentRateRepository {
@@ -24,13 +26,19 @@ public class CommentRateRepositoryImp implements CommentRateRepository {
 	private EntityManager em;
 
 	@Override
-	public CommentRating reviewTitle(CommentRating review) {
+	public CommentRating reviewTitle(CommentRating review) throws UserNotFound, TitleNotFound {
 		// TODO Auto-generated method stub
 
 		String userId = review.getUserId().getId();
 		User existingUser = userRepository.findByUserId(userId);
+		if(existingUser == null ){
+			throw new UserNotFound();
+		}
 		String movieId = review.getMovieId().getMovieId();
 		Title existingTitle = titleRepository.viewTitleDetails(movieId);
+		if(existingTitle == null ){
+			throw new TitleNotFound();
+		}
 		review.setUserId(existingUser);
 		review.setMovieId(existingTitle);
 		em.persist(review);

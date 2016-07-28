@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
+import io.titleflix.exception.TitleFieldValidation;
 import io.titleflix.exception.TitleNotFound;
 
 public interface TitleService {
@@ -28,9 +29,9 @@ public interface TitleService {
 
 	public List<Title> filterByYear(String year, String type) throws NoTitlesPresent;
 
-	public Title createTitle(Title title);
+	public Title createTitle(Title title) throws TitleFieldValidation;
 
-	public Title updateTitle(String movieId, Title title) throws NoTitlesPresent;
+	public Title updateTitle(String movieId, Title title) throws NoTitlesPresent, TitleFieldValidation;
 
 	public void deleteTitle(String movieId) throws  TitleNotFound;
 

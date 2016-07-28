@@ -10,6 +10,7 @@ import io.titleflix.entity.CommentRating;
 import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
+import io.titleflix.exception.TitleFieldValidation;
 import io.titleflix.exception.TitleNotFound;
 import io.titleflix.repository.CommentRateRepository;
 import io.titleflix.repository.TitleRepository;
@@ -142,22 +143,170 @@ public class TitleServiceImp implements TitleService {
 	}
 
 	@Override
-	public Title createTitle(Title title) {
+	public Title createTitle(Title title) throws TitleFieldValidation {
 		// TODO Auto-generated method stub
-		System.out.println("createTitle service");
+		if(title.getActors() == null ||title.getActors() == ""){
+			throw new TitleFieldValidation();
+		}
+		else if(title.getAwards() == null || title.getAwards() == "" )
+		{
+			throw new TitleFieldValidation();	
+		}
+		else if(title.getCountry() == null || title.getCountry() == "" )
+		{
+			throw new TitleFieldValidation();	
+		}
+		else if(title.getDirector() == null || title.getDirector() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getImdbID() == null || title.getImdbID() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getImdbRating() == null || title.getImdbRating() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getImdbVotes() == null || title.getImdbVotes() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getLanguage() == null || title.getLanguage() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getMetascore() == null || title.getMetascore() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getPlot() == null || title.getPlot() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getPoster() == null || title.getPoster() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getRated() == null || title.getRated() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getReleased() == null || title.getReleased() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		
+		else if(title.getRuntime() == null || title.getRuntime() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getTitle() == null || title.getTitle() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getType() == null || title.getType() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getWriters() == null || title.getWriters() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getYear() == null || title.getYear() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		
+		else{		
 		Title newTitle = titleRepository.createTitle(title);
 		return newTitle;
+		}
 	}
 
 	@Override
-	public Title updateTitle(String movieId, Title title) throws NoTitlesPresent {
+	public Title updateTitle(String movieId, Title title) throws NoTitlesPresent, TitleFieldValidation {
 		// TODO Auto-generated method stub
+		if(title.getActors() == null ||title.getActors() == ""){
+			throw new TitleFieldValidation();
+		}
+		else if(title.getAwards() == null || title.getAwards() == "" )
+		{
+			throw new TitleFieldValidation();	
+		}
+		else if(title.getCountry() == null || title.getCountry() == "" )
+		{
+			throw new TitleFieldValidation();	
+		}
+		else if(title.getDirector() == null || title.getDirector() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getImdbID() == null || title.getImdbID() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getImdbRating() == null || title.getImdbRating() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getImdbVotes() == null || title.getImdbVotes() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getLanguage() == null || title.getLanguage() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getMetascore() == null || title.getMetascore() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getPlot() == null || title.getPlot() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getPoster() == null || title.getPoster() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getRated() == null || title.getRated() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getReleased() == null || title.getReleased() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		
+		else if(title.getRuntime() == null || title.getRuntime() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getTitle() == null || title.getTitle() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getType() == null || title.getType() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getWriters() == null || title.getWriters() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else if(title.getYear() == null || title.getYear() == "" )
+		{
+			throw new TitleFieldValidation();
+		}
+		else{
 		Title checkTitle = titleRepository.viewTitleDetails(movieId);
 		if (checkTitle != null) {
 			Title existingTitle = titleRepository.updateTitle(title);
 			return existingTitle;
 		} else {
 			throw new NoTitlesPresent();
+		}
 		}
 
 	}

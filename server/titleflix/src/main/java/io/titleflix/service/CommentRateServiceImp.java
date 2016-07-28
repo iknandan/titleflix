@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.titleflix.entity.CommentRating;
 import io.titleflix.exception.NoReviewsFound;
+import io.titleflix.exception.TitleNotFound;
+import io.titleflix.exception.UserNotFound;
+import io.titleflix.exception.ValidComment;
+import io.titleflix.exception.ValidRating;
+import io.titleflix.exception.ValidTitleId;
+import io.titleflix.exception.ValidUserID;
 import io.titleflix.repository.CommentRateRepository;
 
 
@@ -20,10 +26,25 @@ public class CommentRateServiceImp implements CommentRateService{
 	private CommentRateRepository reviewRepository;
 	
 	@Override
-	public CommentRating reviewTitle(CommentRating review) {
+	public CommentRating reviewTitle(CommentRating review) throws ValidTitleId, ValidUserID, ValidComment, ValidRating, UserNotFound, TitleNotFound {
 		// TODO Auto-generated method stub
-		CommentRating existingReview = reviewRepository.reviewTitle(review);
-		return existingReview;
+		if(review.getMovieId().getMovieId() == "" || review.getMovieId().getMovieId() == null){
+			throw new ValidTitleId();
+		}
+		else if(review.getUserId().getId() == "" || review.getUserId().getId() == null){
+			throw new ValidUserID();
+		}
+		else if(review.getComment() == null || review.getComment()== ""){
+			throw new ValidComment();
+		}
+		else if(review.getRating() >= 0 && review.getRating() <= 5){
+			throw new ValidRating();
+		}
+		else{
+			CommentRating existingReview = reviewRepository.reviewTitle(review);
+			return existingReview;
+		}
+		
 	}
 	
 	

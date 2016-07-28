@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
+import io.titleflix.exception.TitleFieldValidation;
 import io.titleflix.exception.TitleNotFound;
 import io.titleflix.service.TitleService;
 
@@ -110,8 +111,7 @@ public class TitleController {
 
 	// Create a Title - Admin functionality
 	@RequestMapping(value = "/createTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Title createTitle(@RequestBody Title title) {
-		System.out.println("createTitle controller");
+	public Title createTitle(@RequestBody Title title) throws TitleFieldValidation {
 		Title newTitle = titleService.createTitle(title);
 
 		return newTitle;
@@ -120,7 +120,7 @@ public class TitleController {
 	// Update a Title - Admin functionality
 	@RequestMapping(value = "/updateTitle/{movieId}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Title updateTitle(@PathVariable(value = "movieId") String movieId, @RequestBody Title title)
-			throws NoTitlesPresent {
+			throws NoTitlesPresent, TitleFieldValidation {
 		Title updateTitle = titleService.updateTitle(movieId, title);
 
 		return updateTitle;

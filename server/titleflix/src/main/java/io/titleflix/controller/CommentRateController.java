@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import io.titleflix.entity.CommentRating;
 import io.titleflix.exception.NoReviewsFound;
+import io.titleflix.exception.TitleNotFound;
+import io.titleflix.exception.UserNotFound;
+import io.titleflix.exception.ValidComment;
+import io.titleflix.exception.ValidRating;
+import io.titleflix.exception.ValidTitleId;
+import io.titleflix.exception.ValidUserID;
 import io.titleflix.service.CommentRateService;
 
 
@@ -22,7 +28,7 @@ public class CommentRateController {
 	private CommentRateService reviewService;
 	//Commenting and Rating a Title
 	@RequestMapping(value = "/reviewTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public CommentRating reviewTitle(@RequestBody CommentRating review) {
+	public CommentRating reviewTitle(@RequestBody CommentRating review) throws ValidTitleId, ValidUserID, ValidComment, ValidRating, UserNotFound, TitleNotFound {
 
 		CommentRating existingComment = reviewService.reviewTitle(review);
 		return existingComment;
