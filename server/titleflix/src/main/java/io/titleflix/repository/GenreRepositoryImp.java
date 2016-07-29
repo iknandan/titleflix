@@ -21,7 +21,8 @@ public class GenreRepositoryImp implements GenreRepository {
 	@Override
 	public List<Title> filterByGenre(String genreId) {
 		// TODO Auto-generated method stub
-		TypedQuery<Title> genreQuery = em.createQuery("select t from Title t join t.genre g where g.genre = :pgenreId ",Title.class);
+		//TypedQuery<Title> genreQuery = em.createQuery("select t from Title t join t.genre g where g.genre = :pgenreId ",Title.class);
+		TypedQuery<Title> genreQuery = em.createNamedQuery("Genre.filterByGenre",Title.class);
 		genreQuery.setParameter("pgenreId", genreId);
 		List<Title> titleList = genreQuery.getResultList();
 		return titleList;
@@ -29,7 +30,8 @@ public class GenreRepositoryImp implements GenreRepository {
 	@Override
 	public List<Genre> viewAllGenre() {
 		// TODO Auto-generated method stub
-		TypedQuery<Genre> genreListQuery = em.createQuery("select g from Genre g",Genre.class);
+		//TypedQuery<Genre> genreListQuery = em.createQuery("select g from Genre g",Genre.class);
+		TypedQuery<Genre> genreListQuery = em.createNamedQuery("Gnere.viewAllGenre",Genre.class);
 		List<Genre> genreList = genreListQuery.getResultList();
 		return genreList;
 	}

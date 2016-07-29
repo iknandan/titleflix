@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -16,6 +18,10 @@ import lombok.Data;
 @Table
 @Entity
 @Data
+@NamedQueries({@NamedQuery(name="User.findByEmail",query="select u from User u where u.email =:pemail"),
+	@NamedQuery(name="User.signIn",query="select u from User u where u.email = :pemail and u.password = :ppassword"),
+	@NamedQuery(name="User.findAll",query="select u from User u")
+})
 public class User {
 	
 	@Id

@@ -21,7 +21,8 @@ public class UserRepositoryImp implements UserRepository {
 	@Override
 	public User findByEmail(String email) {
 		// TODO Auto-generated method stub
-		TypedQuery<User> query = em.createQuery("select u from User u where u.email =:pemail",User.class);
+		//TypedQuery<User> query = em.createQuery("select u from User u where u.email =:pemail",User.class);
+		TypedQuery<User> query = em.createNamedQuery("User.findByEmail",User.class);
 		query.setParameter("pemail", email.trim());
 		List<User> existingUser = query.getResultList();
 		if(existingUser.isEmpty()){
@@ -29,16 +30,14 @@ public class UserRepositoryImp implements UserRepository {
 		}
 		else{
 			return existingUser.get(0);
-		}
-		
-		
-		
+		}	
 	}
 
 	@Override
 	public User signIn(User user) {
 		// TODO Auto-generated method stub
-		TypedQuery<User> query = em.createQuery("select u from User u where u.email = :pemail and u.password = :ppassword",User.class);
+	//	TypedQuery<User> query = em.createQuery("select u from User u where u.email = :pemail and u.password = :ppassword",User.class);
+		TypedQuery<User> query = em.createNamedQuery("User.signIn",User.class);
 		query.setParameter("pemail", user.getEmail().trim());
 		query.setParameter("ppassword", user.getPassword());
 		List<User> validUser = query.getResultList();
@@ -61,7 +60,8 @@ public class UserRepositoryImp implements UserRepository {
 	@Override
 	public List<User> findAllUsers() {
 		// TODO Auto-generated method stub
-		TypedQuery<User> query = em.createQuery("select u from User u",User.class);
+		//TypedQuery<User> query = em.createQuery("select u from User u",User.class);
+		TypedQuery<User> query = em.createNamedQuery("User.findAll",User.class);
 		List<User> usersList = query.getResultList();
 		return usersList;
 	}

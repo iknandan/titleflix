@@ -18,32 +18,17 @@ import io.titleflix.exception.UserNotFound;
 
 @Repository
 public class CommentRateRepositoryImp implements CommentRateRepository {
-	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private TitleRepository titleRepository;
+	
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
 	public CommentRating reviewTitle(CommentRating review) throws UserNotFound, TitleNotFound {
-		// TODO Auto-generated method stub
-
-		String userId = review.getUserId().getId();
-		User existingUser = userRepository.findByUserId(userId);
-		if(existingUser == null ){
-			throw new UserNotFound();
-		}
-		String movieId = review.getMovieId().getMovieId();
-		Title existingTitle = titleRepository.viewTitleDetails(movieId);
-		if(existingTitle == null ){
-			throw new TitleNotFound();
-		}
-		review.setUserId(existingUser);
-		review.setMovieId(existingTitle);
+		// TODO Auto-generated method stub		
 		em.persist(review);
 		//Code to update the Average Rating of a Title
-		Double averageValue = averagerating(movieId);
+		Double averageValue = averagerating(review.getMovieId().getMovieId());
+		Title existingTitle = review.getMovieId();
 		existingTitle.setAverageRating(averageValue);
 		em.merge(existingTitle);
 		return review;
@@ -51,7 +36,8 @@ public class CommentRateRepositoryImp implements CommentRateRepository {
 
 	private Double averagerating(String movieId) {
 		// TODO Auto-generated method stub
-		TypedQuery<Double> averageQuery = (TypedQuery<Double>) em.createQuery("SELECT AVG(r.rating) FROM CommentRating r WHERE movieId_movieId = :pmovieId");
+	//	TypedQuery<Double> averageQuery = (TypedQuery<Double>) em.createQuery("SELECT AVG(r.rating) FROM CommentRating r WHERE movieId_movieId = :pmovieId");
+		TypedQuery<Double> averageQuery = (TypedQuery<Double>) em.createNamedQuery("Rating.averageQuery");
 		averageQuery.setParameter("pmovieId", movieId);
 		Double averageRating = averageQuery.getSingleResult();
 		return averageRating;
@@ -61,7 +47,8 @@ public class CommentRateRepositoryImp implements CommentRateRepository {
 	public List<CommentRating> viewAllReviwes() {
 		// TODO Auto-generated method stub
 
-		TypedQuery<CommentRating> reiewListQuery = em.createQuery("select r from CommentRating r", CommentRating.class);
+	//	TypedQuery<CommentRating> reiewListQuery = em.createQuery("select r from CommentRating r", CommentRating.class);
+		TypedQuery<CommentRating> reiewListQuery = em.createNamedQuery("Comment.findAll",CommentRating.class);
 		List<CommentRating> reiewList = reiewListQuery.getResultList();
 		return reiewList;
 	}
@@ -69,8 +56,9 @@ public class CommentRateRepositoryImp implements CommentRateRepository {
 	@Override
 	public List<CommentRating> viewReviewsTitle(String movieId) {
 		// TODO Auto--generated method stub
-		TypedQuery<CommentRating> reviewQuery = em
-				.createQuery("select r from CommentRating r where movieId_movieId = :pmovieId", CommentRating.class);
+//		TypedQuery<CommentRating> reviewQuery = em
+//				.createQuery("select r from CommentRating r where movieId_movieId = :pmovieId", CommentRating.class);
+		TypedQuery<CommentRating> reviewQuery = em.createNamedQuery("Reviews.ofTitle",CommentRating.class);
 		reviewQuery.setParameter("pmovieId", movieId);
 		List<CommentRating> reviewList = reviewQuery.getResultList();
 		return reviewList;

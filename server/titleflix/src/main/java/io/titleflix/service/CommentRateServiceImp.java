@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.titleflix.entity.CommentRating;
+import io.titleflix.entity.Title;
+import io.titleflix.entity.User;
 import io.titleflix.exception.NoReviewsFound;
 import io.titleflix.exception.TitleNotFound;
 import io.titleflix.exception.UserNotFound;
@@ -17,6 +19,8 @@ import io.titleflix.exception.ValidRating;
 import io.titleflix.exception.ValidTitleId;
 import io.titleflix.exception.ValidUserID;
 import io.titleflix.repository.CommentRateRepository;
+import io.titleflix.repository.TitleRepository;
+import io.titleflix.repository.UserRepository;
 
 
 @Service
@@ -24,6 +28,10 @@ import io.titleflix.repository.CommentRateRepository;
 public class CommentRateServiceImp implements CommentRateService{
 	@Autowired
 	private CommentRateRepository reviewRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private TitleRepository titleRepository;
 	
 	@Override
 	public CommentRating reviewTitle(CommentRating review) throws ValidTitleId, ValidUserID, ValidComment, ValidRating, UserNotFound, TitleNotFound {
@@ -37,10 +45,22 @@ public class CommentRateServiceImp implements CommentRateService{
 		else if(review.getComment() == null || review.getComment()== ""){
 			throw new ValidComment();
 		}
-		else if(review.getRating() >= 0 && review.getRating() <= 5){
+		else if(review.getRating() < 0 || review.getRating() > 5 ){
 			throw new ValidRating();
 		}
 		else{
+			String userId = review.getUserId().getId();
+			User existingUser = userRepository.findByUserId(userId);
+			if(existingUser == null ){
+				throw new UserNotFound();
+			}
+			String movieId = review.getMovieId().getMovieId();
+			Title existingTitle = titleRepository.viewTitleDetails(movieId);
+			if(existingTitle == null ){
+				throw new TitleNotFound();
+			}
+			review.setUserId(existingUser);
+			review.setMovieId(existingTitle);
 			CommentRating existingReview = reviewRepository.reviewTitle(review);
 			return existingReview;
 		}

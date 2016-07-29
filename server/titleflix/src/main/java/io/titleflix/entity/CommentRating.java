@@ -7,6 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -16,6 +18,9 @@ import lombok.Data;
 @Table
 @Entity
 @Data
+@NamedQueries({@NamedQuery(name="Rating.averageQuery",query="SELECT AVG(r.rating) FROM CommentRating r WHERE movieId_movieId = :pmovieId"),
+	@NamedQuery(name="Comment.findAll",query="select r from CommentRating r"),
+@NamedQuery(name="Reviews.ofTitle",query="select r from CommentRating r where movieId_movieId = :pmovieId")})
 public class CommentRating {
 
 	@Id
