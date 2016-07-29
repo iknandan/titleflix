@@ -5,13 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoGenreFound;
 import io.titleflix.exception.NoTitleForGenre;
 import io.titleflix.repository.GenreRepository;
-import io.titleflix.repository.GenreRepositoryImp;
+
 
 @Service
 @Transactional
@@ -43,6 +42,19 @@ public class GenreServiceImp implements GenreService {
 		}
 		else{
 			return existingGenre;
+		}
+		
+	}
+
+	@Override
+	public List<Title> filterByGenre(String type, String genreId) throws NoTitleForGenre {
+		// TODO Auto-generated method stub
+		List<Title> existingTitles = genreRepository.filterByGenre(type,genreId);
+		if(existingTitles.isEmpty()){
+			throw new NoTitleForGenre();
+		}
+		else{
+			return existingTitles;
 		}
 		
 	}

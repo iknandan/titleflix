@@ -15,7 +15,9 @@ import lombok.Data;
 @Entity
 @Table
 @NamedQueries({@NamedQuery(name="Genre.filterByGenre",query="select t from Title t join t.genre g where g.genre = :pgenreId"),
-	@NamedQuery(name="Gnere.viewAllGenre",query="select g from Genre g")
+	@NamedQuery(name="Gnere.viewAllGenre",query="select g from Genre g"),
+	@NamedQuery(name="Gnere.filterByGenreType",query="select t from Title t join t.genre g where g.genre = :pgenreId and t.type=:ptype")
+	
 })
 public class Genre {
 

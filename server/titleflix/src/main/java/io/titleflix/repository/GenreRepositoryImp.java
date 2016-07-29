@@ -4,12 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceProperty;
 import javax.persistence.TypedQuery;
-
-import org.hibernate.cfg.Environment;
 import org.springframework.stereotype.Repository;
-
 import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 
@@ -34,6 +30,16 @@ public class GenreRepositoryImp implements GenreRepository {
 		TypedQuery<Genre> genreListQuery = em.createNamedQuery("Gnere.viewAllGenre",Genre.class);
 		List<Genre> genreList = genreListQuery.getResultList();
 		return genreList;
+	}
+	@Override
+	public List<Title> filterByGenre(String type, String genreId) {
+		// TODO Auto-generated method stub
+		TypedQuery<Title> genreQuery = em.createNamedQuery("Gnere.filterByGenreType",Title.class);
+		genreQuery.setParameter("pgenreId", genreId);
+		genreQuery.setParameter("ptype", type);
+		List<Title> titleList = genreQuery.getResultList();
+		return titleList;
+		
 	}
 
 	

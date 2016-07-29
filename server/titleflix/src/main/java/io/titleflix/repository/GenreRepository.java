@@ -11,4 +11,6 @@ public interface GenreRepository {
 
 	public List<Genre> viewAllGenre();
 
+	public List<Title> filterByGenre(String type, String genreId);
+
 }

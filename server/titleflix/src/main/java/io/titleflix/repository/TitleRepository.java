@@ -1,9 +1,6 @@
 package io.titleflix.repository;
 
 import java.util.List;
-
-import io.titleflix.entity.CommentRating;
-import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 
 public interface TitleRepository {

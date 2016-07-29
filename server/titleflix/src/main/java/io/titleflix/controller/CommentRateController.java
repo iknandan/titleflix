@@ -21,27 +21,27 @@ import io.titleflix.service.CommentRateService;
 
 
 @RestController
-@RequestMapping(value = "/comment")
+@RequestMapping(path = "/comment")
 public class CommentRateController {
 	
 	@Autowired
 	private CommentRateService reviewService;
 	//Commenting and Rating a Title
-	@RequestMapping(value = "/reviewTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(path = "/reviewTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public CommentRating reviewTitle(@RequestBody CommentRating review) throws ValidTitleId, ValidUserID, ValidComment, ValidRating, UserNotFound, TitleNotFound {
 
 		CommentRating existingComment = reviewService.reviewTitle(review);
 		return existingComment;
 	}
 	
-	@RequestMapping(value="/viewReviews/{movieId}",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(path="/viewReviews/{movieId}",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<CommentRating> viewReviewsTitle(@PathVariable(value="movieId") String movieId) throws NoReviewsFound {
 		List<CommentRating> existingReviews = reviewService.viewReviewsTitle(movieId);
 		return existingReviews;
 	}
 	
 	// List all Rating - demo method
-	@RequestMapping(value = "/reviewList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(path = "/reviewList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<CommentRating> viewAllReviews() {
 
 		List<CommentRating> existingList = reviewService.viewAllReviwes();

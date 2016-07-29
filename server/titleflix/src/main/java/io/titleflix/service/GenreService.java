@@ -13,4 +13,6 @@ public interface GenreService {
 
 	public List<Genre> viewAllGenre() throws NoGenreFound;
 
+	public List<Title> filterByGenre(String type, String genreId) throws NoTitleForGenre;
+
 }

@@ -4,15 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import io.titleflix.entity.CommentRating;
 import io.titleflix.entity.Title;
-import io.titleflix.entity.User;
 import io.titleflix.exception.TitleNotFound;
 import io.titleflix.exception.UserNotFound;
 
@@ -36,7 +31,6 @@ public class CommentRateRepositoryImp implements CommentRateRepository {
 
 	private Double averagerating(String movieId) {
 		// TODO Auto-generated method stub
-	//	TypedQuery<Double> averageQuery = (TypedQuery<Double>) em.createQuery("SELECT AVG(r.rating) FROM CommentRating r WHERE movieId_movieId = :pmovieId");
 		TypedQuery<Double> averageQuery = (TypedQuery<Double>) em.createNamedQuery("Rating.averageQuery");
 		averageQuery.setParameter("pmovieId", movieId);
 		Double averageRating = averageQuery.getSingleResult();

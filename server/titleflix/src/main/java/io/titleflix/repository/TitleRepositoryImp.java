@@ -2,16 +2,10 @@ package io.titleflix.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import org.springframework.stereotype.Repository;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-
-import io.titleflix.entity.CommentRating;
 import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 

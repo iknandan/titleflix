@@ -1,14 +1,10 @@
 package io.titleflix.repository;
 
 import java.util.List;
-
-import javax.jws.soap.SOAPBinding.Use;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import org.springframework.stereotype.Repository;
-
 import io.titleflix.entity.User;
 
 @Repository

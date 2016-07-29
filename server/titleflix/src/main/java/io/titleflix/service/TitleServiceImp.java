@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import io.titleflix.entity.CommentRating;
-import io.titleflix.entity.Genre;
 import io.titleflix.entity.Title;
 import io.titleflix.exception.NoTitlesPresent;
 import io.titleflix.exception.TitleFieldValidation;
