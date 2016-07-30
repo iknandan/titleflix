@@ -14,63 +14,69 @@ import io.titleflix.exception.ValidEmail;
 import io.titleflix.exception.ValidPassword;
 import io.titleflix.exception.ValidUserName;
 import io.titleflix.repository.UserRepository;
+import io.titleflix.validation.UserValidation;
 
+/**
+ * This is a User service layer where all the business logic is implemented and
+ * exceptions are thrown
+ * 
+ * @author nandan
+ *
+ */
 @Service
 @Transactional
 public class UserServiceImp implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private UserValidation userValidation;
 
+	// This method is used as a User signIn functionality
 	@Override
 	public User signIn(User user) throws UserNotFound, IncorrectCredentials, ValidEmail, ValidPassword {
-		// TODO Auto-generated method stub
-		if (user.getEmail() == null || user.getEmail() == "") {
-			throw new ValidEmail();
-		} else if (user.getPassword() == null || user.getPassword() == "") {
-			throw new ValidPassword();
-		} else {
-			User existing = userRepository.findByEmail(user.getEmail());
-			if (existing != null) {
-				User validUser = userRepository.signIn(user);
-				if (validUser != null) {
-					return validUser;
-				} else {
-					throw new IncorrectCredentials();
-				}
+
+		// Method used to validate User Object
+		User validUser = userValidation.validateUserSignIn(user);
+		// Checks, User exists with the Email provided
+		User existing = userRepository.findByEmail(validUser.getEmail());
+		// Validation to check the user present in the data base.
+		if (existing != null) {
+			// The signIn functionality to check credentials
+			User checkUser = userRepository.signIn(user);
+			if (checkUser != null) {
+				return checkUser;
 			} else {
-				throw new UserNotFound();
+				throw new IncorrectCredentials();
 			}
+		} else {
+			throw new UserNotFound();
 		}
 
 	}
 
+	// This method is used as a User signUp functionality
 	@Override
 	public User signUp(User user) throws UserAlreadyExists, ValidUserName, ValidEmail, ValidPassword {
-		// TODO Auto-generated method stub
-		if (user.getUserName() == null || user.getUserName() == "") {
-			throw new ValidUserName();
-		} else if (user.getEmail() == null || user.getEmail() == "") {
-			throw new ValidEmail();
-		} else if (user.getPassword() == null || user.getPassword() == "") {
-			throw new ValidPassword();
+		// Method used to validate User Object
+		User validUser = userValidation.validateUserSignUp(user);
+		// Checks, User exists with the Email provided
+		User existing = userRepository.findByEmail(validUser.getEmail());
+		if (existing == null) {
+			// Implement SignUp functionality
+			User registeredUser = userRepository.signUp(user);
+			return registeredUser;
 		} else {
-
-			User existing = userRepository.findByEmail(user.getEmail());
-			if (existing == null) {
-				User registeredUser = userRepository.signUp(user);
-				return registeredUser;
-			} else {
-				throw new UserAlreadyExists();
-			}
+			throw new UserAlreadyExists();
 		}
+
 	}
 
+	//This method is used to find all user present in the DataBase 
 	@Override
 	public List<User> findAllUsers() {
-		// TODO Auto-generated method stub
+		// Method to find All users
 		List<User> findAllUsers = userRepository.findAllUsers();
-
 		return findAllUsers;
 	}
 

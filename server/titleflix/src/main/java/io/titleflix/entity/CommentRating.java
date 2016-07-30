@@ -14,7 +14,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
-
+/**
+ * Comment and Rating Entity
+ * @author nandan
+ *
+ */
 @Table
 @Entity
 @Data

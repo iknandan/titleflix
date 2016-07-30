@@ -10,7 +10,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
-
+/**
+ * The Genre Entity
+ * @author nandan
+ *
+ */
 @Data
 @Entity
 @Table

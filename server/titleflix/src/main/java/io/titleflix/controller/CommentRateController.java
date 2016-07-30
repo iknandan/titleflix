@@ -19,31 +19,40 @@ import io.titleflix.exception.ValidTitleId;
 import io.titleflix.exception.ValidUserID;
 import io.titleflix.service.CommentRateService;
 
+/**
+ * This controller class is used to post and get the comments and Ratings of a
+ * Title by all the users present.
+ * 
+ * @author nandan
+ *
+ */
 
 @RestController
 @RequestMapping(path = "/comment")
 public class CommentRateController {
-	
+
 	@Autowired
 	private CommentRateService reviewService;
-	//Commenting and Rating a Title
-	@RequestMapping(path = "/reviewTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public CommentRating reviewTitle(@RequestBody CommentRating review) throws ValidTitleId, ValidUserID, ValidComment, ValidRating, UserNotFound, TitleNotFound {
 
+	// This functionality is used to Comment and Rate a Title
+	@RequestMapping(path = "/reviewTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public CommentRating reviewTitle(@RequestBody CommentRating review)
+			throws ValidTitleId, ValidUserID, ValidComment, ValidRating, UserNotFound, TitleNotFound {
 		CommentRating existingComment = reviewService.reviewTitle(review);
 		return existingComment;
 	}
-	
-	@RequestMapping(path="/viewReviews/{movieId}",method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<CommentRating> viewReviewsTitle(@PathVariable(value="movieId") String movieId) throws NoReviewsFound {
+
+	// This functionality is used to find all the comments and reviews of a
+	// particular title
+	@RequestMapping(path = "/viewReviews/{movieId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<CommentRating> viewReviewsTitle(@PathVariable(value = "movieId") String movieId) throws NoReviewsFound {
 		List<CommentRating> existingReviews = reviewService.viewReviewsTitle(movieId);
 		return existingReviews;
 	}
-	
-	// List all Rating - demo method
+
+	// This functionality is used to List all Rating - demo pupose only
 	@RequestMapping(path = "/reviewList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<CommentRating> viewAllReviews() {
-
 		List<CommentRating> existingList = reviewService.viewAllReviwes();
 		return existingList;
 	}

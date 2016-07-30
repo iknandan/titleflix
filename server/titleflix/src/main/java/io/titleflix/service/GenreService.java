@@ -9,10 +9,10 @@ import io.titleflix.exception.NoTitleForGenre;
 
 public interface GenreService {
 
-	public List<Title> filterByGenre(String genreId) throws NoTitleForGenre;
+	public List<Title> filterByGenre(String genre) throws NoTitleForGenre;
 
 	public List<Genre> viewAllGenre() throws NoGenreFound;
 
-	public List<Title> filterByGenre(String type, String genreId) throws NoTitleForGenre;
+	public List<Title> filterByGenre(String type, String genre) throws NoTitleForGenre;
 
 }

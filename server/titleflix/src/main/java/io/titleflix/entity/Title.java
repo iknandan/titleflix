@@ -17,7 +17,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
-
+/**
+ * The title Entity
+ * @author nandan
+ *
+ */
 
 @Data
 @Entity

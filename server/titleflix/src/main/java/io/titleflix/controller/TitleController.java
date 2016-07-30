@@ -15,6 +15,13 @@ import io.titleflix.exception.TitleFieldValidation;
 import io.titleflix.exception.TitleNotFound;
 import io.titleflix.service.TitleService;
 
+/**
+ * This controller is used to performe all the operations on the Title Entity.
+ * It uses GET, POST, PUT and DELETE request
+ * 
+ * @author nandan
+ *
+ */
 @RestController
 @RequestMapping(path = "/title")
 public class TitleController {
@@ -57,7 +64,6 @@ public class TitleController {
 	public List<Title> sortByYear() throws NoTitlesPresent {
 		List<Title> sortedTitles = titleService.sortByYear();
 		return sortedTitles;
-
 	}
 
 	// Sorting catalog based on IMDB Ratings in Descending order
@@ -65,7 +71,6 @@ public class TitleController {
 	public List<Title> sortByImdbRating() throws NoTitlesPresent {
 		List<Title> sortedTitles = titleService.sortByImdbRating();
 		return sortedTitles;
-
 	}
 
 	// Sorting catalog based on IMDB Votes in Descending order
@@ -89,7 +94,7 @@ public class TitleController {
 		return ratedSeries;
 	}
 
-	// View Title Details
+	// Functionality to view a Title Details
 	@RequestMapping(path = "/viewTitleDetails/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Title viewTitleDetails(@PathVariable(value = "id") String id) throws TitleNotFound {
 		Title titleDetails = titleService.viewTitleDetails(id);
@@ -99,9 +104,7 @@ public class TitleController {
 	// Link to IMDB Site
 	@RequestMapping(path = "imdbSiteNavigate/{imdbId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ModelAndView toImdbSite(@PathVariable(value = "imdbId") String imdbId) {
-
 		String imbdSite = "http://www.imdb.com/title/" + imdbId;
-
 		return new ModelAndView("redirect:" + imbdSite);
 	}
 
@@ -109,7 +112,6 @@ public class TitleController {
 	@RequestMapping(path = "/createTitle", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Title createTitle(@RequestBody Title title) throws TitleFieldValidation {
 		Title newTitle = titleService.createTitle(title);
-
 		return newTitle;
 	}
 
@@ -118,12 +120,12 @@ public class TitleController {
 	public Title updateTitle(@PathVariable(value = "movieId") String movieId, @RequestBody Title title)
 			throws NoTitlesPresent, TitleFieldValidation {
 		Title updateTitle = titleService.updateTitle(movieId, title);
-
 		return updateTitle;
 	}
+
 	// Delete a Title - Admin functionality
-	@RequestMapping(path = "/deleteTitle/{movieId}",method=RequestMethod.DELETE)
-	public void deleteTitle(@PathVariable(value="movieId")String movieId) throws  TitleNotFound{
+	@RequestMapping(path = "/deleteTitle/{movieId}", method = RequestMethod.DELETE)
+	public void deleteTitle(@PathVariable(value = "movieId") String movieId) throws TitleNotFound {
 		titleService.deleteTitle(movieId);
 	}
 }

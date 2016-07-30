@@ -15,7 +15,12 @@ import io.titleflix.exception.NoGenreFound;
 import io.titleflix.exception.NoTitleForGenre;
 import io.titleflix.service.GenreService;
 
-
+/**
+ * This controller class is used to get the Titles based on the genre selected
+ * 
+ * @author nandan
+ *
+ */
 @RestController
 @RequestMapping(path = "/genre")
 public class GenreController {
@@ -23,11 +28,10 @@ public class GenreController {
 	@Autowired
 	private GenreService genreService;
 
-	// Filter Catalog based on Genre
-	@RequestMapping(path = "/filterByGenre/{genreId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Title> filterByGenre(@PathVariable(value = "genreId") String genreId) throws NoTitleForGenre {
-		List<Title> titleList = genreService.filterByGenre(genreId);
-
+	// This functionality is used to Filter Catalog based on Genre
+	@RequestMapping(path = "/filterByGenre/{genre}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Title> filterByGenre(@PathVariable(value = "genre") String genre) throws NoTitleForGenre {
+		List<Title> titleList = genreService.filterByGenre(genre);
 		return titleList;
 	}
 
@@ -38,12 +42,11 @@ public class GenreController {
 		return genreList;
 	}
 
-	// Filter Catalog based on Genre and Type
-	@RequestMapping(path = "/filterByGenreType/{type}/{genreId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// Filter Catalog based on Genre and Type - for front End use only
+	@RequestMapping(path = "/filterByGenreType/{type}/{genre}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public List<Title> filterByGenre(@PathVariable(value = "type") String type,
-			@PathVariable(value = "genreId") String genreId) throws NoTitleForGenre {
-		List<Title> titleList = genreService.filterByGenre(type, genreId);
-
+			@PathVariable(value = "genre") String genre) throws NoTitleForGenre {
+		List<Title> titleList = genreService.filterByGenre(type, genre);
 		return titleList;
 	}
 

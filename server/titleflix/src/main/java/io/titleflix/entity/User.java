@@ -9,7 +9,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import lombok.Data;
-
+/**
+ * The User entity
+ * @author nandan
+ *
+ */
 @Table
 @Entity
 @Data
