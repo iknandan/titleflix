@@ -1,0 +1,87 @@
+body{
+    background-image: url("https://assets.nflxext.com/ffe/siteui/acquisition/login/login-daredevil-1500x1000.2.jpg");
+}
+
+.nav-style {
+    background-color: transparent;
+    border: transparent;
+    height: 5%;
+    margin: 0px;
+}
+.navbar-header{
+    padding-left: 20px;
+    padding-top: 15px;
+}
+.navbar-brand{
+    color: red !important;
+    font-size: 300%;}
+.login-form{
+    background-color: #f3f3f3;
+    width: 450px;
+    height: 500px;
+    margin: 40px auto 30px auto;
+}
+.login-content{
+    padding-top: 10px;
+    padding-left: 8%;
+}
+.login-content h1{
+    padding-top: 10px;
+}
+.form-control{
+    width: 90%;
+    height: 45px;
+    border-radius: 0%;
+
+
+}
+.login-forgot-password{
+    text-align:right;
+    margin-right: 10%;
+    font-size: larger;
+    color: blue;
+}
+.checkbox{
+    font-size: larger;
+}
+.btn{
+    border-style:none;
+    color: white;
+    border-radius: 0%;
+    height: 50px;
+    font-size: large;
+    width: 40%;
+    text-decoration: none;
+    margin-bottom: 10px;
+    background-color: #0277ec;
+}
+.btn:hover{
+    color: white;
+    background-color: #0080ff;
+
+}
+label{
+    font-weight: normal;
+    margin-bottom: 0%;
+    font-size: medium;
+}
+.signIn-link{
+    margin-top: 10px;
+    font-size: larger;
+}
+.btn-signin{
+    margin-top: 10px;
+    border-style:none;
+    color: white;
+    height: 40px;
+    margin-right: 60px;
+    width: 70%;
+    background-color: red;
+}
+
+.btn-signin:hover{
+    text-decoration: none;
+}
+.btn-signin a{
+    color: white;
+}
