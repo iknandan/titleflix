@@ -119,4 +119,39 @@ input[type=search]:focus {
 .navbar-nav li a:active{
     background-color: #141414;
 }
+.clear-fix:after{
+    content: ".";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+/*@keyframes upperja {*/
+    /*from{*/
+        /*opacity: 0;*/
+        /*transform: translate3d(0, 100%, 0);*/
+    /*}*/
+    /*to{*/
+        /*opacity: 1;*/
+        /*transform: none;*/
+    /*}*/
+/*}*/
+/*.upperja{*/
+    /*animation-duration: 3s;*/
+    /*animation-name: upperja;*/
+/*}*/
 
+/*@keyframes uuperja {*/
+    /*from{*/
+        /*opacity: 0;*/
+        /*transform: translate3d(0, 100%, 0);*/
+    /*}*/
+    /*to{*/
+        /*opacity: 1;*/
+        /*transform: none;*/
+    /*}*/
+/*}*/
+/*.uuperja{*/
+    /*animation-duration: 2s;*/
+    /*animation-name: uuperja;*/
+/*}*/
