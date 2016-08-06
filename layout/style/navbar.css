@@ -1,0 +1,92 @@
+body{
+    background-color: #141414;
+}
+.nav-style {
+    background-color: #141414;
+    border: transparent;
+    height: 5%;
+    margin: 0px;
+    opacity: .8;
+}
+.navbar-header{
+    padding-left: 10px;
+
+}
+.navbar-header a{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.navbar-brand{
+    margin-top: 10px;
+    padding-top: 10px;
+    color: red !important;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.right-nav{
+    margin-top: 15px;
+}
+li button{
+    margin-right: 15px;
+    background-color: transparent;
+    border: transparent;
+    color: white;
+    font-size: medium;
+}
+.username{
+
+    margin-top: 5px;
+    margin-left: 10px;
+    color: white;
+    font-weight: 500;
+}
+input[type=search]{
+    margin-right: 50px;
+    color: white;
+    width: 70px;
+    box-sizing: border-box;
+    border: transparent;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: transparent;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.glyphicon-menu-down{
+    margin-right: 40px;
+}
+.right-nav{
+    display: inline;
+}
+
+input[type=search]:focus {
+    width:70%;
+    border-color: white;
+}
+.glyphicon-search{
+    margin-right: 5px;
+    color: white;
+}
+.dropdown-toggle{
+    color: #E50914 !important;
+    font-weight: bolder;
+    font-size: medium;
+    background-color: #141414;
+}
+.dropdown-menu{
+    background-color: black;
+    color: white;
+
+}
+.dropdown-menu li a{
+    color:white;
+    font-size: medium;
+    font-weight: bold;
+}
+.sort a{
+    color: red !important;
+}
+.rated {
+    font-weight: 300 !important;
+    color: white !important;
+}

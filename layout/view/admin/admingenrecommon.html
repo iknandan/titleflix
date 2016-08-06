@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Movie List</title>
+    <title>Filter based on Genre</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../style/animate.css">
     <link rel="stylesheet" href="../../style/slideupside.css">
-    <link rel="stylesheet" href="../../style/navbar.css">
-    <link rel="stylesheet" href="../../style/user/commontype.css">
+    <link rel="stylesheet" href="../../style/user/commonyeargenre.css">
 </head>
 <body>
 <nav class="navbar navbar-default nav-style text-center navbar-fixed-top">
@@ -16,9 +15,34 @@
             <a class="navbar-brand animated flip" href="../../view/user/home.html">TITLEFLIX</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="browse-all animated bounceIn"><a href="../../view/user/browse.html">Browse All</a></li>
             <li class="dropdown">
-                <a class="dropdown-toggle animated bounceIn" data-toggle="dropdown" href="#">Type
+                <a class="dropdown-toggle animated bounceIn" data-toggle="dropdown" href="#">Genre
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Thriller</a></li>
+                    <li><a href="#">Comedy</a></li>
+                    <li><a href="#">Suspence</a></li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Animation</a></li>
+                    <li><a href="#">Family</a></li>
+                    <li><a href="#">Horror</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn" data-toggle="dropdown" href="#">Year
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">2010</a></li>
+                    <li><a href="#">2004</a></li>
+                    <li><a href="#">2005</a></li>
+                    <li><a href="#">2006</a></li>
+                    <li><a href="#">2007</a></li>
+                    <li><a href="#">2008</a></li>
+                    <li><a href="#">2009</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle  animated bounceIn" data-toggle="dropdown" href="#">Type
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="../../view/user/onlymovies.html">Movie</a></li>
@@ -48,34 +72,7 @@
 </nav>
 <div class="container">
     <div class="row animated flip">
-        <h2 class="first-row">Watch Movies Online</h2>
-
-            <div class="dropdown first-row">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Genre:
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu bg-opacity">
-                    <li><a href="#">Thriller</a></li>
-                    <li><a href="#">Comedy</a></li>
-                    <li><a href="#">Suspence</a></li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Animation</a></li>
-                    <li><a href="#">Family</a></li>
-                    <li><a href="#">Horror</a></li>
-                </ul>
-            </div>
-        <div class="dropdown first-row">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year:
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu bg-opacity">
-                <li><a href="#">2010</a></li>
-                <li><a href="#">2004</a></li>
-                <li><a href="#">2005</a></li>
-                <li><a href="#">2006</a></li>
-                <li><a href="#">2007</a></li>
-                <li><a href="#">2008</a></li>
-                <li><a href="#">2009</a></li>
-            </ul>
-        </div>
+        <h2 class="first-row">Titles related to genre {{title.genre}}</h2>
         <hr>
     </div>
     <div class="row">
