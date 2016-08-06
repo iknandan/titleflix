@@ -1,0 +1,10 @@
+.create-title {
+
+    font-weight: bolder;
+    font-size: large;
+    font-family: Ebrima;
+    margin-bottom: 10px;
+}
+.create-title a{
+    color: white;
+}

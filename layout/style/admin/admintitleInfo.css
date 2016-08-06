@@ -205,3 +205,8 @@ i{
 .avg{
     color: #777373;
 }
+.modify a{
+    color: goldenrod;
+    margin-right: 10px;
+    text-decoration: none;
+}
