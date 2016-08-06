@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../style/animate.css">
-    <link rel="stylesheet" href="../style/slideupside.css">
-    <link rel="stylesheet" href="../style/commonyeargenre.css">
+    <link rel="stylesheet" href="../../style/animate.css">
+    <link rel="stylesheet" href="../../style/slideupside.css">
+    <link rel="stylesheet" href="../../style/user/commontype.css">
 </head>
 <body>
 <nav class="navbar navbar-default nav-style text-center navbar-fixed-top">
@@ -15,32 +15,7 @@
             <a class="navbar-brand animated flip" href="../view/home.html">TITLEFLIX</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a class="dropdown-toggle animated bounceIn" data-toggle="dropdown" href="#">Genre
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Thriller</a></li>
-                    <li><a href="#">Comedy</a></li>
-                    <li><a href="#">Suspence</a></li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Animation</a></li>
-                    <li><a href="#">Family</a></li>
-                    <li><a href="#">Horror</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle animated bounceIn" data-toggle="dropdown" href="#">Year
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">2010</a></li>
-                    <li><a href="#">2004</a></li>
-                    <li><a href="#">2005</a></li>
-                    <li><a href="#">2006</a></li>
-                    <li><a href="#">2007</a></li>
-                    <li><a href="#">2008</a></li>
-                    <li><a href="#">2009</a></li>
-                </ul>
-            </li>
+            <li class="browse-all animated bounceIn"><a href="../view/browse.html">Browse All</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle animated bounceIn" data-toggle="dropdown" href="#">Type
                     <span class="caret"></span></a>
@@ -72,7 +47,33 @@
 </nav>
 <div class="container">
     <div class="row animated flip">
-        <h2 class="first-row">Titles related to year {{title.year}}</h2>
+        <h2 class="first-row">{{title.year}} series</h2>
+        <div class="dropdown first-row">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Genre:
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu bg-opacity">
+                <li><a href="#">Thriller</a></li>
+                <li><a href="#">Comedy</a></li>
+                <li><a href="#">Suspence</a></li>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Animation</a></li>
+                <li><a href="#">Family</a></li>
+                <li><a href="#">Horror</a></li>
+            </ul>
+        </div>
+        <div class="dropdown first-row">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year:
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu bg-opacity">
+                <li><a href="#">2010</a></li>
+                <li><a href="#">2004</a></li>
+                <li><a href="#">2005</a></li>
+                <li><a href="#">2006</a></li>
+                <li><a href="#">2007</a></li>
+                <li><a href="#">2008</a></li>
+                <li><a href="#">2009</a></li>
+            </ul>
+        </div>
         <hr>
     </div>
     <div class="row">
@@ -158,11 +159,11 @@
                 <li><a href="#">5</a></li>
             </ul>
         </div>
-        </div>
     </div>
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</div>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

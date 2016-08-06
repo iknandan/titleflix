@@ -3,7 +3,7 @@ background-color: #141414;
 }
 .bg-image{
     /*background-color: #141414;*/
-    background-image: url("../image/PopcorntimeDummy.JPG");
+    background-image: url("../../image/PopcorntimeDummy.JPG");
     min-height: 600px;
     /*background-size: cover;*/
     background-position:center;
