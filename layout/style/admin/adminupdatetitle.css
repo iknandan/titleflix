@@ -12,7 +12,8 @@ label{
     color: #c7bebe;
 }
 .form-control{
-    background-color: #a09d9d;
+    background-color: black;
+    color: white;
 }
 .btn{
     background-color: #E50914;
@@ -29,7 +30,4 @@ label{
 .btn:hover{
     color: red;
 
-}
-.form-control{
-    color: white;
 }
