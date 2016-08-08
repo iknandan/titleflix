@@ -1,7 +1,7 @@
-.poster{
+article{
     display: inline;
 }
-.poster img{
+article img{
     height: 5%;
     width: 17%;
     margin-right: 2%;
@@ -9,7 +9,7 @@
     transition: box-shadow 1s;
     opacity: .7;
 }
-.poster img:hover{
+article img:hover{
     box-shadow: 5px 0px 80px white;
     opacity: 1;
 }
