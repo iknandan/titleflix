@@ -1,0 +1,25 @@
+article{
+    display: inline;
+}
+article img{
+    height: 5%;
+    width: 17%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    transition: box-shadow 1s;
+    opacity: .7;
+}
+article img:hover{
+    box-shadow: 5px 0px 80px white;
+    opacity: 1;
+}
+.container{
+    margin: 4% 0% 0% 10%;
+}
+.clear-fix:after{
+    content: ".";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}

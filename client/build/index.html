@@ -2,7 +2,11 @@
 <html lang="en" ng-app="titleflix">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>TitleFLix</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Latest compiled and minified CSS -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <!-- endinject -->
@@ -11,8 +15,14 @@
     <!-- endinject -->
 
     <!-- inject:css -->
+    <link rel="stylesheet" href="styles/animate.css">
+    <link rel="stylesheet" href="styles/browse.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="styles/slideupside.css">
     <link rel="stylesheet" href="styles/title.css">
     <!-- endinject -->
 
@@ -21,14 +31,12 @@
 
 </head>
 <body>
-maf sfs.
-Checking 12 3
-{{3+8}}
-{{'asbakhdahbdhad'}}
+<section ng-view></section>
 <!-- bower:js -->
 <script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/angular-route/angular-route.js"></script>
 <script src="/bower_components/angular-messages/angular-messages.js"></script>
+<script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
 <!-- endinject -->
 
 <!-- vendor:js -->
@@ -36,12 +44,14 @@ Checking 12 3
 
 <!-- inject:js -->
 <script src="app/service/users.detail.service.js"></script>
+<script src="app/app.js"></script>
 <script src="app/service/title.service.js"></script>
 <script src="app/directives/user.directive.js"></script>
 <script src="app/directives/title.directive.js"></script>
 <script src="app/controllers/user.controller.js"></script>
 <script src="app/controllers/title.controller.js"></script>
-<script src="app/app.js"></script>
+<script src="app/controllers/signup.controller.js"></script>
+<script src="app/controllers/signIn.controller.js"></script>
 <!-- endinject -->
 
 <!-- app:js -->

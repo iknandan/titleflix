@@ -4,11 +4,9 @@
 (function () {
     'use strict';
     angular.module('titleflix')
-        .controller('homeController',homeController);
-
-    homeController.$inject = [];
-    function homeController() {
+        .controller('signInController',signInController);
+    signInController.$inject = [];
+    function signInController() {
 
     }
-
 })();

@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default nav-style text-center navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/browse">TITLEFLIX</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Genre</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#">Genre 1</a>
+                    <a href="#">Genre 2</a>
+                    <a href="#">Genre 3</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Year</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#">year 1</a>
+                    <a href="#">year 2</a>
+                    <a href="#">year 3</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Type</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#">movies</a>
+                    <a href="#">series</a>
+                </div>
+            </li>
+            <li class="dropdown sort">
+                <a class="dropdown-toggle animated bounceIn" href="#/browse"><span style="cursor:pointer">Sort By</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#">IMDB Rating</a>
+                    <a href="#">IMDB Votes</a>
+                    <a href="#">Year</a>
+                </div>
+            </li>
+            <li ><a href="../../view/user/topratedmovies.html" class="rated animated bounceIn">Top Rated Movies</a></li>
+            <li ><a href="../../view/user/topratedseries.html" class="rated animated bounceIn">Top Rated Series</a></li>
+        </ul>
+        <div class="right-nav pull-right">
+            <ul class="nav navbar-nav">
+                <li><span class="glyphicon glyphicon-search animated slideInLeft"></span>
+                    <input type="search" placeholder="Search  ..with Title">
+                </li>
+                <li><span class="animated slideInLeft"><img src="https://secure.netflix.com/ffe/profiles/avatars_v2/32x32/PICON_025.png"></span></li>
+                <li><span class="username animated slideInLeft">nandan</span><span class="glyphicon glyphicon-menu-down"></span></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container" >
+    <section>
+        <article dir-paginate="title in titleVm.titles | itemsPerPage: 15">
+            <img class="upperja" ng-src="{{title.poster}}">
+        </article>
+        <div class="clear-fix"></div>
+        <div class="text-center upperja">
+            <dir-pagination-controls
+                    max-size="5"
+                    direction-links="true"
+                    boundary-links="true" >
+            </dir-pagination-controls>
+        </div>
+    </section>
+</div>
