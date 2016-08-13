@@ -26,6 +26,21 @@
                 controller: 'titleController',
                 controllerAs: 'titleVm'
             })
+            .when('/topRatedMovies',{
+                templateUrl:'app/views/topMovies.tmpl.html',
+                controller: 'topMoviesController',
+                controllerAs: 'topMoviesVm'
+            })
+            .when('/topRatedSeries',{
+                templateUrl:'app/views/topSeries.tmpl.html',
+                controller: 'topSeriesController',
+                controllerAs: 'topSeriesVm'
+            })
+            .when('/sortBy/:basedOn',{
+                templateUrl:'app/views/sortBy.tmpl.html',
+                controller: 'sortByController',
+                controllerAs: 'sortByVm'
+            })
             .otherwise({
                 redirectTo:'/home'
             })
