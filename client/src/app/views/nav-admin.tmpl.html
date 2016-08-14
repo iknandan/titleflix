@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default nav-style text-center navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand animated flip" href="#/admin/browse">TITLEFLIX</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Genre</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/admin/filterBy/genre/{{genreObj.genre}}" ng-repeat="genreObj in navBarVm.genres">{{genreObj.genre}}</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Year</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/admin/filterBy/year/{{year}}" ng-repeat="year in navBarVm.years">{{year}}</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Type</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/admin/filterBy/type/{{type}}" ng-repeat="type in navBarVm.types">{{type}}</a>
+                </div>
+            </li>
+            <li class="dropdown sort">
+                <a class="dropdown-toggle animated bounceIn" href="#/browse"><span style="cursor:pointer">Sort By</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/admin/sortBy/imdbRating">IMDB Rating</a>
+                    <a href="#/admin/sortBy/imdbVotes">IMDB Votes</a>
+                    <a href="#/admin/sortBy/year">Year</a>
+                </div>
+            </li>
+            <li class="dropdown sort">
+                <a class="dropdown-toggle animated bounceIn" href="#/browse"><span style="cursor:pointer">Top rated</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/admin/topRatedMovies">Top Rated Movies</a>
+                    <a href="#/admin/topRatedSeries">Top Rated Series</a>
+                </div>
+            </li>
+            <li ><a href="#/admin/create" class="rated animated bounceIn">Create Title</a></li>
+        </ul>
+        <div class="right-nav pull-right">
+            <ul class="nav navbar-nav">
+                <li><span class="glyphicon glyphicon-search animated slideInLeft"></span>
+                    <input type="search" placeholder="Search  ..with Title">
+                </li>
+                <li><span class="animated slideInLeft"><img src="https://secure.netflix.com/ffe/profiles/avatars_v2/32x32/PICON_025.png"></span></li>
+                <li><span class="username animated slideInLeft">nandan</span><span class="glyphicon glyphicon-menu-down"></span></li>
+            </ul>
+        </div>
+    </div>
+</nav>
