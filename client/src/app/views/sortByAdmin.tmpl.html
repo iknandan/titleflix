@@ -1,0 +1,22 @@
+<nav-admin></nav-admin>
+<div class="container" >
+    <div class="row animated flip">
+        <h2 class="first-row">Titles based on Sorting</h2>
+        <hr>
+    </div>
+    <section>
+        <article dir-paginate="title in sortByVm.sortTitles | itemsPerPage: 15">
+            <a href="#/admin/browse/{{title.movieId}}"><img class="upperja" ng-src="{{title.poster}}"></a>
+            <div class="tooltiptext"><p>{{title.title}}</p> <p>Year: {{title.year}}</p><p>Language: {{title.language}}</p><p>Avg Rating: {{title.averageRating}}</p></div>
+
+        </article>
+        <div class="clear-fix"></div>
+        <div class="text-center upperja">
+            <dir-pagination-controls
+                    max-size="5"
+                    direction-links="true"
+                    boundary-links="true" >
+            </dir-pagination-controls>
+        </div>
+    </section>
+</div>
