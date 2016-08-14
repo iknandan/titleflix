@@ -51,6 +51,46 @@
                 controller: 'titleInfoController',
                 controllerAs: 'titleInfoVm'
             })
+            .when('/admin/browse',{
+                templateUrl:'app/views/titlesAdmin.tmpl.html',
+                controller: 'titleController',
+                controllerAs: 'titleVm'
+            })
+            .when('/admin/topRatedMovies',{
+                templateUrl:'app/views/topMoviesAdmin.tmpl.html',
+                controller: 'topMoviesController',
+                controllerAs: 'topMoviesVm'
+            })
+            .when('/admin/topRatedSeries',{
+                templateUrl:'app/views/topSeriesAdmin.tmpl.html',
+                controller: 'topSeriesController',
+                controllerAs: 'topSeriesVm'
+            })
+            .when('/admin/sortBy/:basedOn',{
+                templateUrl:'app/views/sortByAdmin.tmpl.html',
+                controller: 'sortByController',
+                controllerAs: 'sortByVm'
+            })
+            .when('/admin/filterBy/:basedOn/:value',{
+                templateUrl:'app/views/filterByAdmin.tmpl.html',
+                controller: 'filterByController',
+                controllerAs: 'filterByVm'
+            })
+            .when('/admin/browse/:id',{
+                templateUrl:'app/views/titleInfoAdmin.tmpl.html',
+                controller: 'titleInfoController',
+                controllerAs: 'titleInfoVm'
+            })
+            .when('/admin/create',{
+                templateUrl:'app/views/titleCreate.tmpl.html',
+                controller: 'titleCreateController',
+                controllerAs: 'titleCreateVm'
+            })
+            .when('/admin/update',{
+                templateUrl:'app/views/titleUpdate.tmpl.html',
+                controller: 'titleUpdateController',
+                controllerAs: 'titleUpdateVm'
+            })
             .otherwise({
                 redirectTo:'/home'
             })
