@@ -39,7 +39,9 @@ em{
     font-weight: bold;
 }
 .imdb-poster{
-    width: 100px;
+    width: 70px;
+    margin: 0%;
+    padding: 0%;
 }
 .reviews{
     margin-top: 1%;
@@ -78,6 +80,11 @@ em{
  }
  .submit{
      margin-top: 20px;
+     background-color: #E50914;
+     color: whitesmoke;
+     border-style: none;
+     width: 10em;
+     height: 3em;
  }
  .bg-color{
      padding: 0;
