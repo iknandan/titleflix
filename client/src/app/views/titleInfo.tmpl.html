@@ -1,0 +1,139 @@
+<nav class="navbar navbar-default nav-style text-center navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand animated flip" href="#/browse">TITLEFLIX</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Genre</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/filterBy/genre/action">action</a>
+                    <a href="#/filterBy/genre/animation">animation</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Year</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/filterBy/year/2016">2016</a>
+                    <a href="#/filterBy/year/2015">2015</a>
+                    <a href="#/filterBy/year/2014">2014</a>
+                    <a href="#/filterBy/year/2013">2013</a>
+                    <a href="#/filterBy/year/2012">2012</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Type</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/filterBy/type/movie">Movies</a>
+                    <a href="#/filterBy/type/series">Series</a>
+                </div>
+            </li>
+            <li class="dropdown sort">
+                <a class="dropdown-toggle animated bounceIn" href="#/browse"><span style="cursor:pointer">Sort By</span>
+                    <span class="caret"></span></a>
+                <div class="dropdown-content">
+                    <a href="#/sortBy/imdbRating">IMDB Rating</a>
+                    <a href="#/sortBy/imdbVotes">IMDB Votes</a>
+                    <a href="#/sortBy/year">Year</a>
+                </div>
+            </li>
+            <li ><a href="#/topRatedMovies" class="rated animated bounceIn">Top Rated Movies</a></li>
+            <li ><a href="#/topRatedSeries" class="rated animated bounceIn">Top Rated Series</a></li>
+        </ul>
+        <div class="right-nav pull-right">
+            <ul class="nav navbar-nav">
+                <li><span class="glyphicon glyphicon-search animated slideInLeft"></span>
+                    <input type="search" placeholder="Search  ..with Title">
+                </li>
+                <li><span class="animated slideInLeft"><img src="https://secure.netflix.com/ffe/profiles/avatars_v2/32x32/PICON_025.png"></span></li>
+                <li><span class="username animated slideInLeft">nandan</span><span class="glyphicon glyphicon-menu-down"></span></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 ">
+            <aside>
+                <img class="thumbnail animated slideInLeft" ng-src="{{titleInfoVm.title.poster}}">
+            </aside>
+            <h3 class="avg animated slideInLeft">Average Rating: {{titleInfoVm.title.averageRating | number}}</h3>
+        </div>
+        <div class="col-sm-6">
+            <section>
+                <h4 class="title  animated slideInDown">{{titleInfoVm.title.title}}</h4>
+                <span class="pull-right"><a href="http://www.imdb.com/title/{{titleInfoVm.title.imdbID}}/" target="_blank"><img class="imdb-poster" src="http://www.userlogos.org/files/logos/mafi0z/IMDb.png"></a></span>
+                <p><span class="defination">Plot: </span><em>{{titleInfoVm.title.plot}}</em></p>
+                <div class="col-sm-6 upperja">
+                    <article>
+                        <p><span class="defination">Year: </span><em>{{titleInfoVm.title.year}}</em></p>
+                        <p><span class="defination">Genre: </span><span ng-repeat="genreObj in titleInfoVm.title.genre"><em>{{genreObj.genre+', '}}</em></span></p>
+                        <p><span class="defination">Director: </span><em>{{titleInfoVm.title.director}}</em></p>
+                        <p><span class="defination">Writer: </span><em>{{titleInfoVm.title.writers}}</em></p>
+                        <p><span class="defination">Actors: </span><em>{{titleInfoVm.title.actors}}</em></p>
+                        <p><span class="defination">Rated: </span><em>{{titleInfoVm.title.rated}}</em></p>
+                        <p><span class="defination">Released: </span><em>{{titleInfoVm.title.released}}</em></p>
+                    </article>
+                </div>
+                <div class="col-sm-6 upperja">
+                    <article>
+                        <p><span class="defination">Language: </span><em>{{titleInfoVm.title.language}}</em></p>
+                        <p><span class="defination">Country: </span><em>{{titleInfoVm.title.country}}</em></p>
+                        <p><span class="defination">Awards: </span><em>{{titleInfoVm.title.awards}}</em></p>
+                        <p><span class="defination">Metascore: </span><em>{{titleInfoVm.title.metascore}}</em></p>
+                        <p><span class="defination">imdbRating: </span><em>{{titleInfoVm.title.imdbRating}}</em></p>
+                        <p><span class="defination">Runtime: </span><em>{{titleInfoVm.title.runtime}}</em></p>
+                        <p><span class="defination">imdbVotes: </span><em>{{titleInfoVm.title.imdbVotes}}</em></p>
+                        <p><span class="defination">imdbID: </span><em>{{titleInfoVm.title.imdbID}}</em></p>
+                        <p><span class="defination">Type: </span><em>{{titleInfoVm.title.type}}</em></p>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-3 animated slideInRight">
+            <h3 class="title text-center">Review:</h3>
+            <div class="row">
+                <div class="form-group" >
+                    <textarea placeholder="comment the title......" class="form-control c-textarea" rows="5"></textarea>
+                </div>
+                <div class="row">
+                    <div col-sm-6><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div>
+                    <div col-sm-6><button class="submit pull-right">Submit</button></div>
+
+                </div>
+                <!--<div class="col-sm-3 form-group bg-color">-->
+                <!--<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>-->
+                <!--<button class="submit">Submit</button>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="container reviews upperja">
+        <h3>Comments and Ratings:</h3>
+        <hr>
+        <div class="row">
+            <ul>
+                <li>
+                    <div class="row" ng-repeat="review in titleInfoVm.comments">
+                        <div class="col-sm-1">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="comments">
+                                <div class="comment-row">
+                                    <div class="comment-heading">{{review.userId.userName}}</div>
+                                    <div class="comment-heading">RatingValue :{{review.rating}}</div>
+                                </div>
+                                <p class="user-comment">{{review.comment}}</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

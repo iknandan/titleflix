@@ -41,6 +41,16 @@
                 controller: 'sortByController',
                 controllerAs: 'sortByVm'
             })
+            .when('/filterBy/:basedOn/:value',{
+                templateUrl:'app/views/filterBy.tmpl.html',
+                controller: 'filterByController',
+                controllerAs: 'filterByVm'
+            })
+            .when('/browse/:id',{
+                templateUrl:'app/views/titleInfo.tmpl.html',
+                controller: 'titleInfoController',
+                controllerAs: 'titleInfoVm'
+            })
             .otherwise({
                 redirectTo:'/home'
             })
