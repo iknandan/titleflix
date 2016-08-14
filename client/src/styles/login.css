@@ -47,6 +47,7 @@ label{
     display: inline-block;
     width: 22em;
     font-size: large;
+    cursor: pointer;
 }
 
 .sign-in-btn:hover{
@@ -57,3 +58,8 @@ label{
     margin-top: 2em;
     font-size: 1.5em;
 }
+/*.login-button {*/
+    /*border-style: none;*/
+    /**/
+    /*padding: 0%;*/
+/*}*/
