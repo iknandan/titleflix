@@ -11,12 +11,17 @@
     function commentService($http,$q) {
 
         var commentVm = this;
-        this.conmmentsList = conmmentsList;
+        commentVm.conmmentsList = conmmentsList;
+        commentVm.postComment = postComment;
 
         function conmmentsList(id) {
             return $http.get('http://localhost:8080/titleflix/api/comment/viewReviews/'+id)
                 .then(successFn,errorFn);
         };
+        function postComment(comment) {
+            return $http.post('http://localhost:8080/titleflix/api/comment/reviewTitle',comment)
+                .then(successFn,errorFn);
+        }
         function successFn(response) {
             return response.data
         };

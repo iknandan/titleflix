@@ -5,10 +5,11 @@
     'use strict';
     angular.module('titleflix')
         .controller('navBarController',navBarController);
-    navBarController.$inject = ['navBarService'];
-    function navBarController(navBarService) {
+    navBarController.$inject = ['navBarService','userService'];
+    function navBarController(navBarService,userService) {
 
         var navBarVm = this;
+        navBarVm.logout = logout;
         init();
         function init() {
 
@@ -30,6 +31,11 @@
                 },function (error) {
                     console.log(error);
                 });
+        };
+        function logout() {
+            userService.logOut()
+
+
         };
     };
 })();

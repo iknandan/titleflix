@@ -125,3 +125,12 @@ em{
 .avg{
     color: #777373;
 }
+.stars{
+    font-size: x-large;
+    color: gold;
+}
+.rate-as{
+    font-weight: bold;
+    font-size: large;
+    color: white;
+}

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('titleflix',['ngRoute','angularUtils.directives.dirPagination','ngMessages'])
+        .module('titleflix',['ngRoute','angularUtils.directives.dirPagination','ngMessages','ngAnimate','ui.bootstrap'])
         .config(moduleConfig);
 
     function moduleConfig($routeProvider) {

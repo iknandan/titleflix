@@ -10,6 +10,9 @@
     padding-left: 10px;
 
 }
+.cursor{
+    cursor: pointer;
+}
 
 .navbar-nav li a{
     font-size: large;
