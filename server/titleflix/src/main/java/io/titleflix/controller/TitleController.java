@@ -37,18 +37,45 @@ public class TitleController {
 		return existing;
 	}
 
-	// Filter Catalog based on type
-	@RequestMapping(path = "/filterByType/{type}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Title> filterByType(@PathVariable(value = "type") String type) throws NoTitlesPresent {
-		List<Title> fliteredTitles = titleService.filterByType(type);
+	// // Filter Catalog based on type
+	// @RequestMapping(path = "/filterByType/{type}", method =
+	// RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// public List<Title> filterByType(@PathVariable(value = "type") String
+	// type) throws NoTitlesPresent {
+	// List<Title> fliteredTitles = titleService.filterByType(type);
+	// return fliteredTitles;
+	// }
+	//
+	// // Filter Catalog based on year
+	// @RequestMapping(path = "/filterByYear/{year}", method =
+	// RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	// public List<Title> filterByYear(@PathVariable(value = "year") String
+	// year) throws NoTitlesPresent {
+	// List<Title> fliteredTitles = titleService.filterByYear(year);
+	// return fliteredTitles;
+	// }
+
+	// Filter Catalog - common functionality - improvised code
+	@RequestMapping(path = "/filterBy/{basedOn}/{value}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<Title> filterByModified(@PathVariable(value = "basedOn") String basedOn,
+			@PathVariable(value = "value") String value) throws NoTitlesPresent {
+		System.out.println(basedOn + " " + value);
+		List<Title> fliteredTitles = titleService.filterByModified(basedOn, value);
 		return fliteredTitles;
 	}
 
-	// Filter Catalog based on year
-	@RequestMapping(path = "/filterByYear/{year}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Title> filterByYear(@PathVariable(value = "year") String year) throws NoTitlesPresent {
-		List<Title> fliteredTitles = titleService.filterByYear(year);
-		return fliteredTitles;
+	// List of years present from database
+	@RequestMapping(path = "/yearList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<String> yearList() {
+		List<String> existingYears = titleService.yearList();
+		return existingYears;
+	}
+
+	// List of type present from database
+	@RequestMapping(path = "/typeList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public List<String> typeList() {
+		List<String> existingYears = titleService.typeList();
+		return existingYears;
 	}
 
 	// Filter Catalog based on year and type - Used for frontEnd.
@@ -59,26 +86,26 @@ public class TitleController {
 		return fliteredTitles;
 	}
 
-	// Sorting catalog based on Year in Descending order
-	@RequestMapping(path = "/sortByYear", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Title> sortByYear() throws NoTitlesPresent {
-		List<Title> sortedTitles = titleService.sortByYear();
-		return sortedTitles;
-	}
-
-	// Sorting catalog based on IMDB Ratings in Descending order
-	@RequestMapping(path = "/sortByImdbRating", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Title> sortByImdbRating() throws NoTitlesPresent {
-		List<Title> sortedTitles = titleService.sortByImdbRating();
-		return sortedTitles;
-	}
-
-	// Sorting catalog based on IMDB Votes in Descending order
-	@RequestMapping(path = "/sortByImdbVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Title> sortByImdbVotes() throws NoTitlesPresent {
-		List<Title> sortedTitles = titleService.sortByImdbVotes();
-		return sortedTitles;
-	}
+//	// Sorting catalog based on Year in Descending order
+//	@RequestMapping(path = "/sortByYear", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//	public List<Title> sortByYear() throws NoTitlesPresent {
+//		List<Title> sortedTitles = titleService.sortByYear();
+//		return sortedTitles;
+//	}
+//
+//	// Sorting catalog based on IMDB Ratings in Descending order
+//	@RequestMapping(path = "/sortByImdbRating", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//	public List<Title> sortByImdbRating() throws NoTitlesPresent {
+//		List<Title> sortedTitles = titleService.sortByImdbRating();
+//		return sortedTitles;
+//	}
+//
+//	// Sorting catalog based on IMDB Votes in Descending order
+//	@RequestMapping(path = "/sortByImdbVotes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//	public List<Title> sortByImdbVotes() throws NoTitlesPresent {
+//		List<Title> sortedTitles = titleService.sortByImdbVotes();
+//		return sortedTitles;
+//	}
 
 	// TOP RATED MOVIES as per IMDB Rating (>=9)
 	@RequestMapping(path = "/topRatedMovies", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

@@ -31,6 +31,12 @@ public interface TitleRepository {
 
 	public void deleteTitle(String movieId);
 
+	public List<Title> filterByYearModified(String basedOn, String value);
+
+	public List<String> yearList();
+
+	public List<String> typeList();
+
 	
 
 

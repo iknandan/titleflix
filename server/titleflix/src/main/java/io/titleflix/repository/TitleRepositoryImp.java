@@ -119,12 +119,17 @@ public class TitleRepositoryImp implements TitleRepository {
 	}
 
 	private Title commonFunctionality(Title title) {
+		if(title.getGenre().isEmpty()){
+			return title;
+		}
+		else{
 		List<Genre> newGenre = title.getGenre();
 		// Checks the genre is existing, if not the new genre is persisted
 		List<Genre> existingGnereLsit = checkGenre(newGenre);
 		title.setGenre(null);
 		title.setGenre(existingGnereLsit);
 		return title;
+		}
 	}
 
 	// Update a Title - Admin functionality
@@ -164,6 +169,41 @@ public class TitleRepositoryImp implements TitleRepository {
 		Title existingTitle = viewTitleDetails(movieId);
 		em.remove(existingTitle);
 
+	}
+
+	@Override
+	public List<Title> filterByYearModified(String basedOn, String value) {
+		// TODO Auto-generated method stub
+		if(basedOn.contains("genre")){
+			System.out.println("repo "+basedOn+" "+value);
+			System.out.println("kjsdabkas"+basedOn+"jksdbkjas"+value);
+			TypedQuery<Title> filteredQuery = em.createQuery("select t from Title t join t.genre g where g.genre = :pgenre",Title.class);
+			filteredQuery.setParameter("pgenre", value);
+			List<Title> filteredList = filteredQuery.getResultList();
+			return filteredList;
+		}
+		
+		TypedQuery<Title> filteredQuery = em.createQuery("select t from Title t where t."+basedOn+" = :pvalue",Title.class);
+		filteredQuery.setParameter("pvalue", value);
+		List<Title> filteredList = filteredQuery.getResultList();
+		return filteredList;
+		
+	}
+
+	@Override
+	public List<String> yearList() {
+		// TODO Auto-generated method stub
+		TypedQuery<String> yearQuery = em.createQuery("select distinct(t.year) from Title t order by t.year desc",String.class);
+		List<String> yearList = yearQuery.getResultList();
+		return yearList;
+	}
+
+	@Override
+	public List<String> typeList() {
+		// TODO Auto-generated method stub
+		TypedQuery<String> typeQuery = em.createQuery("select distinct(t.type) from Title t",String.class);
+		List<String> typeList = typeQuery.getResultList();
+		return typeList;
 	}
 
 }

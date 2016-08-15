@@ -183,4 +183,27 @@ public class TitleServiceImp implements TitleService {
 
 	}
 
+	@Override
+	public List<Title> filterByModified(String basedOn, String value) {
+		// TODO Auto-generated method stub
+		System.out.println("controller "+basedOn+" "+value);
+		List<Title> filteredList = titleRepository.filterByYearModified(basedOn,value);
+		return filteredList;
+	}
+
+	@Override
+	public List<String> yearList() {
+		// TODO Auto-generated method stub
+		List<String> existingYears = titleRepository.yearList();
+		return existingYears;
+	}
+
+	@Override
+	public List<String> typeList() {
+		// TODO Auto-generated method stub
+		List<String> existingType = titleRepository.typeList();
+		return existingType;
+		
+	}
+
 }

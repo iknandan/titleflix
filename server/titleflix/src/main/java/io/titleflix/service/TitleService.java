@@ -35,4 +35,10 @@ public interface TitleService {
 
 	public void deleteTitle(String movieId) throws  TitleNotFound;
 
+	public List<Title> filterByModified(String basedOn, String value);
+
+	public List<String> yearList();
+
+	public List<String> typeList();
+
 }
