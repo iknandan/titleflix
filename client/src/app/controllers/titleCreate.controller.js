@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .controller('titleCreateController',titleCreateController);
 
-    titleCreateController.$inject = ['titleCreateService','$location'];
-    function titleCreateController(titleCreateService,$location){
+    titleCreateController.$inject = ['titleService','$location'];
+    function titleCreateController(titleService,$location){
         var titleCreateVm = this;
         titleCreateVm.createTitle = createTitle;
         function createTitle() {
@@ -32,7 +32,7 @@
             }
             titleCreateVm.newTitle.genre = "";
             titleCreateVm.newTitle.genre = arr;
-            titleCreateService.createTitle(titleCreateVm.newTitle)
+            titleService.createTitle(titleCreateVm.newTitle)
                 .then(function (newTitle) {
                     titleCreateVm.newTitle = newTitle;
                     titleCreateVm.newTitle= [];

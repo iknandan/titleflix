@@ -6,14 +6,14 @@
     angular.module('titleflix')
         .controller('titleUpdateController',titleUpdateController);
 
-    titleUpdateController.$inject = ['titleInfoService','titleUpdateService','$routeParams','$location'];
-    function titleUpdateController(titleInfoService,titleUpdateService,$routeParams,$location){
+    titleUpdateController.$inject = ['titleService','$routeParams','$location'];
+    function titleUpdateController(titleService,$routeParams,$location){
         var titleUpdateVm = this;
         titleUpdateVm.updateTitle = updateTitle;
         console.log('titleUpdateController');
         init();
         function init() {
-            titleInfoService.titleInfo($routeParams.id)
+            titleService.titleInfo($routeParams.id)
                 .then(function (title) {
                     titleUpdateVm.title = title;
                 },function (error) {
@@ -42,7 +42,7 @@
             }
             titleUpdateVm.title.genre = "";
             titleUpdateVm.title.genre = arr;
-            titleUpdateService.updateTitle($routeParams.id,titleUpdateVm.title)
+            titleService.updateTitle($routeParams.id,titleUpdateVm.title)
                 .then(function (updatedTitle) {
                     titleUpdateVm.updatedTitle = updatedTitle;
                     titleUpdateVm.updatedTitle = [];

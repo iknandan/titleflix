@@ -6,14 +6,14 @@
     angular.module('titleflix')
         .controller('sortByController',sortByController);
 
-    sortByController.$inject = ['sortByService','$routeParams'];
-    function sortByController(sortByService,$routeParams) {
+    sortByController.$inject = ['titleService','$routeParams'];
+    function sortByController(titleService,$routeParams) {
 
         var sortByVm = this;
         init();
         function init(){
             console.log('sortByController');
-            sortByService.sortby($routeParams.basedOn)
+            titleService.sortby($routeParams.basedOn)
                 .then(function(sortTitles){
                     sortByVm.sortTitles = sortTitles;
                 },function(error){

@@ -6,13 +6,13 @@
     angular.module('titleflix')
         .controller('topSeriesController',topSeriesController);
 
-    topSeriesController.$inject = ['topSeriesService'];
-    function topSeriesController(topSeriesService) {
+    topSeriesController.$inject = ['titleService'];
+    function topSeriesController(titleService) {
         var topSeriesVm = this;
         init();
 
         function init() {
-            topSeriesService.topratedSeries()
+            titleService.topratedSeries()
                 .then(function (topSeriesTitles) {
                     topSeriesVm.topSeriesTitles = topSeriesTitles;
                 },function (error) {

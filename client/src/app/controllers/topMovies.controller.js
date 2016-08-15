@@ -6,13 +6,13 @@
     angular.module('titleflix')
         .controller('topMoviesController',topMoviesController);
 
-    topMoviesController.$inject = ['topMoviesService'];
-    function topMoviesController(topMoviesService){
+    topMoviesController.$inject = ['titleService'];
+    function topMoviesController(titleService){
         var topMoviesVm = this;
         init();
 
         function init(){
-            topMoviesService.topRatedMovies()
+            titleService.topRatedMovies()
                 .then(function (topMovietitles) {
                     topMoviesVm.topMovietitles = topMovietitles;
                 },function (error) {

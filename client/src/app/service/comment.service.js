@@ -3,17 +3,18 @@
  */
 (function () {
     'use strict';
+
     angular.module('titleflix')
-        .service('titleUpdateService',titleUpdateService);
+        .service('commentService',commentService);
 
-    titleUpdateService.$inject = ['$http','$q'];
-    function titleUpdateService($http,$q) {
+    commentService.$inject = ['$http','$q'];
+    function commentService($http,$q) {
 
-        var titleUpdateVm = this;
-        titleUpdateVm.updateTitle = updateTitle;
+        var commentVm = this;
+        this.conmmentsList = conmmentsList;
 
-        function updateTitle(id,title) {
-            return $http.put('http://localhost:8080/titleflix/api/title/updateTitle/'+id,title)
+        function conmmentsList(id) {
+            return $http.get('http://localhost:8080/titleflix/api/comment/viewReviews/'+id)
                 .then(successFn,errorFn);
         };
         function successFn(response) {

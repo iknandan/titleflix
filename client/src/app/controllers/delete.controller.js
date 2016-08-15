@@ -5,14 +5,14 @@
     'use strict';
     angular.module('titleflix')
         .controller('deleteController',deleteController);
-    deleteController.$inject = ['deleteService','$location','$routeParams'];
-    function deleteController(deleteService,$location,$routeParams) {
+    deleteController.$inject = ['titleService','$location','$routeParams'];
+    function deleteController(titleService,$location,$routeParams) {
         var deleteVm = this;
         deleteVm.deleteTitle = deleteTitle;
         
         function deleteTitle() {
 
-            deleteService.deleteTitle($routeParams.id)
+            titleService.deleteTitle($routeParams.id)
                 .then(function (deletedTitle) {
                     deleteVm.deletedTitle = deletedTitle;
                     $location.path('/admin/browse');

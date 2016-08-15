@@ -6,14 +6,14 @@
 
     angular.module('titleflix')
         .controller('filterByController',filterByController);
-    filterByController.$inject = ['filterByService','$routeParams'];
-    function filterByController(filterByService,$routeParams) {
+    filterByController.$inject = ['titleService','$routeParams'];
+    function filterByController(titleService,$routeParams) {
 
         var filterByVm = this;
 
         init();
         function init(){
-            filterByService.filterBy($routeParams.basedOn,$routeParams.value)
+            titleService.filterBy($routeParams.basedOn,$routeParams.value)
                 .then(function (filterTitles) {
                     filterByVm.filterTitles = filterTitles;
                 },function (error) {
