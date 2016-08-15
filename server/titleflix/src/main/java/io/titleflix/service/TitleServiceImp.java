@@ -206,4 +206,11 @@ public class TitleServiceImp implements TitleService {
 		
 	}
 
+	@Override
+	public List<Title> sortBy(String basedOn) {
+		// TODO Auto-generated method stub
+		List<Title> existingList = titleRepository.sortBy(basedOn);
+		return existingList;
+	}
+
 }

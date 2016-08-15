@@ -106,6 +106,13 @@ public class TitleController {
 //		List<Title> sortedTitles = titleService.sortByImdbVotes();
 //		return sortedTitles;
 //	}
+	
+	// Sorting catalog based on IMDB Votes in Descending order
+		@RequestMapping(path = "/sortBy/{whatever}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+		public List<Title> sortByImdbVotes(@PathVariable(value="whatever") String whatever) throws NoTitlesPresent {
+			List<Title> sortedTitles = titleService.sortBy(whatever);
+			return sortedTitles;
+		}
 
 	// TOP RATED MOVIES as per IMDB Rating (>=9)
 	@RequestMapping(path = "/topRatedMovies", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

@@ -41,4 +41,6 @@ public interface TitleService {
 
 	public List<String> typeList();
 
+	public List<Title> sortBy(String whatever);
+
 }

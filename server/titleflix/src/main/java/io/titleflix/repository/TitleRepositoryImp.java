@@ -206,4 +206,12 @@ public class TitleRepositoryImp implements TitleRepository {
 		return typeList;
 	}
 
+	@Override
+	public List<Title> sortBy(String basedOn) {
+		// TODO Auto-generated method stub
+		TypedQuery<Title> sortQuery = em.createQuery("select t from Title t order by (t."+basedOn+" + 0) desc",Title.class);
+		List<Title> sortList =  sortQuery.getResultList();
+		return sortList;
+	}
+
 }
