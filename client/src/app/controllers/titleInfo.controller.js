@@ -7,14 +7,17 @@
     angular.module('titleflix')
         .controller('titleInfoController',titleInfoController);
 
-    titleInfoController.$inject = ['titleInfoService','$routeParams'];
-    function titleInfoController(titleInfoService,$routeParams) {
+    titleInfoController.$inject = ['titleInfoService','deleteService','$routeParams','$location'];
+    function titleInfoController(titleInfoService,deleteService,$routeParams,$location) {
         var titleInfoVm = this;
+         titleInfoVm.titleId = "";
+        titleInfoVm.deleteTitle = deleteTitle;
         init();
         function init() {
             titleInfoService.titleInfo($routeParams.id)
                 .then(function (title) {
                     titleInfoVm.title = title;
+                    titleInfoVm.titleId = titleInfoVm.title.movieId;
                 },function (error) {
                     console.log(error);
                 });
@@ -23,6 +26,17 @@
                     titleInfoVm.comments = comments;
                 },function (error) {
                     console.log(error);
+                });
+        };
+
+        function deleteTitle() {
+            console.log('titleInfoController '+titleInfoVm.titleId);
+            deleteService.deleteTitle(titleInfoVm.titleId)
+                .then(function (deletedTitle) {
+                    titleInfoVm.deletedTitle = deletedTitle;
+                    $location.path('/admin/browse');
+                },function (error) {
+                    console.log(error)
                 });
         };
     };

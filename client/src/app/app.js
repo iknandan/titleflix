@@ -86,7 +86,7 @@
                 controller: 'titleCreateController',
                 controllerAs: 'titleCreateVm'
             })
-            .when('/admin/update',{
+            .when('/admin/update/:id',{
                 templateUrl:'app/views/titleUpdate.tmpl.html',
                 controller: 'titleUpdateController',
                 controllerAs: 'titleUpdateVm'

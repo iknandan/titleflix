@@ -8,94 +8,156 @@
         <div class="col-sm-3 admin-label">
             <div class="form-group ">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.title" id="Title" placeholder="Title Name" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.title" id="title" name="title" placeholder="Title Name" required>
+                <div ng-messages="createTitleForm.title.$error" class="error" ng-if="createTitleForm.title.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="year">Year</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.year" id="Year" placeholder="eg: 2009" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.year" id="year" name="year" placeholder="eg: 2009" required>
+                <div ng-messages="createTitleForm.year.$error" class="error" ng-if="createTitleForm.year.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="rated">Rated</label>
-                <input type="Rated" class="form-control" ng-model="titleCreateVm.newTitle.rated" id="Rated" placeholder="Rate - R" required>
+                <input type="Rated" class="form-control" ng-model="titleCreateVm.newTitle.rated" id="rated" name="rated" placeholder="Rate - R" required>
+                <div ng-messages="createTitleForm.rated.$error" class="error" ng-if="createTitleForm.rated.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="released">Released:</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.released" id="Released" placeholder="release date" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.released" id="released"  name="released" placeholder="release date" required>
+                <div ng-messages="createTitleForm.released.$error" class="error" ng-if="createTitleForm.released.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="runtime">Runtime:</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.runtime" id="Runtime" placeholder="Time in minutes" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.runtime" id="runtime" name="runtime" placeholder="Time in minutes" required>
+                <div ng-messages="createTitleForm.runtime.$error" class="error" ng-if="createTitleForm.runtime.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="director">Director:</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.director" id="Director" placeholder="Directors" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.director" id="director" name="director" placeholder="Directors" required>
+                <div ng-messages="createTitleForm.director.$error" class="error" ng-if="createTitleForm.director.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
         </div>
         <div class="col-sm-3 admin-label">
             <div class="form-group">
-                <label for="writer">Writer</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.writer" id="Writer" placeholder="Writers" required>
+                <label for="writers">Writer</label>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.writers" id="writers" name="writers" placeholder="Writers" required>
+                <div ng-messages="createTitleForm.writers.$error" class="error" ng-if="createTitleForm.writers.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="actors">Actors:</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.actors" id="Actors" placeholder="Actors" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.actors" id="actors" name="actors" placeholder="Actors" required>
+                <div ng-messages="createTitleForm.actors.$error" class="error" ng-if="createTitleForm.actors.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="plot">Plot</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.plot" id="Plot" placeholder=" Title Description" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.plot" id="plot" name="plot" placeholder=" Title Description" required>
+                <div ng-messages="createTitleForm.plot.$error" class="error" ng-if="createTitleForm.plot.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="language">Language</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.language" id="Language" placeholder="ENGLISH, HINDI" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.language" id="language" name="language" placeholder="ENGLISH, HINDI" required>
+                <div ng-messages="createTitleForm.language.$error" class="error" ng-if="createTitleForm.language.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="country">Country</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.country" id="Country" placeholder="USA, INDIA" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.country" id="country" name="country" placeholder="USA, INDIA" required>
+                <div ng-messages="createTitleForm.country.$error" class="error" ng-if="createTitleForm.country.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
         </div>
         <div class="col-sm-3 admin-label">
             <div class="form-group">
                 <label for="poster">Poster</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.poster" id="Poster" placeholder="Image URL..." required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.poster" id="poster" name="poster" placeholder="Image URL..." required>
+                <div ng-messages="createTitleForm.poster.$error" class="error" ng-if="createTitleForm.poster.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="metascore">Metascore</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.metascore" id="Metascore" placeholder="Metascore" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.metascore" id="metascore" name="metascore" placeholder="Metascore" required>
+                <div ng-messages="createTitleForm.metascore.$error" class="error" ng-if="createTitleForm.metascore.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="imdbRating">imdbRating</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.imdbRating" id="imdbRating" placeholder="IMDB Rating" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.imdbRating" id="imdbRating" name="imdbRating" placeholder="IMDB Rating" required>
+                <div ng-messages="createTitleForm.imdbRating.$error" class="error" ng-if="createTitleForm.imdbRating.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="imdbVotes">imdbVotes</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.imdbVotes" id="imdbVotes" placeholder="IMDB votes" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.imdbVotes" id="imdbVotes" name="imdbVotes" placeholder="IMDB votes" required>
+                <div ng-messages="createTitleForm.imdbVotes.$error" class="error" ng-if="createTitleForm.imdbVotes.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="imdbID">imdbID:</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.imdbID" id="imdbID" placeholder="IMDB ID" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.imdbID" id="imdbID" name="imdbID" placeholder="IMDB ID" required>
+                <div ng-messages="createTitleForm.imdbID.$error" class="error" ng-if="createTitleForm.imdbID.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
-
         </div>
         <div class="col-sm-3 admin-label">
             <div class="form-group">
                 <label for="awards">Awards:</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.awards" id="Awards" placeholder="eg:awards won..." required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.awards" id="awards" name="awards" placeholder="eg:awards won..." required>
+                <div ng-messages="createTitleForm.awards.$error" class="error" ng-if="createTitleForm.awards.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="type">Type</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.type" id="Type" placeholder="Movie/series" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.type" id="type" name="type"  placeholder="Movie/series" required>
+                <div ng-messages="createTitleForm.type.$error" class="error" ng-if="createTitleForm.type.$dirty">
+                    <p ng-message="required">This field cannot be empty</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="genre[0].genre">Genre 1</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[0].genre" id="genre[0].genre" placeholder="Genre 1" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[0].genre" id="genre[0].genre" name="genre[0].genre" placeholder="Genre 1" required>
+                <!--<div ng-messages="createTitleForm.genre[0].genre".$error" class="error" ng-if="createTitleForm.genre[0].genre".$dirty">-->
+                    <!--<p ng-message="required">This field cannot be empty</p>-->
+                <!--</div>-->
             </div>
             <div class="form-group">
                 <label for="genre[1].genre">Genre 2</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[1].genre" id="genre[1].genre" placeholder="Genre 2" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[1].genre" id="genre[1].genre" name="genre[1].genre" placeholder="Genre 2" required>
+                <!--<div ng-messages="createTitleForm.genre[1].genre.$error" class="error" ng-if="createTitleForm.genre[1].genre.$dirty">-->
+                    <!--<p ng-message="required">This field cannot be empty</p>-->
+                <!--</div>-->
             </div>
             <div class="form-group">
                 <label for="genre[2].genre">Genre 3</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[2].genre" id="genre[2].genre" placeholder="Genre 3" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[2].genre" name="genre[2].genre" id="genre[2].genre" placeholder="Genre 3" required>
+                <!--<div ng-messages="createTitleForm.genre[2].genre.$error" class="error" ng-if="createTitleForm.genre[2].genre.$dirty">-->
+                    <!--<p ng-message="required">This field cannot be empty</p>-->
+                <!--</div>-->
             </div>
         </div>
         <button type="submit" class="btn-default admin-button">Create</button>

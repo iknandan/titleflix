@@ -12,8 +12,8 @@
         var titleUpdateVm = this;
         titleUpdateVm.updateTitle = updateTitle;
 
-        function updateTitle() {
-            return $http.post('')
+        function updateTitle(id,title) {
+            return $http.put('http://localhost:8080/titleflix/api/title/updateTitle/'+id,title)
                 .then(successFn,errorFn);
         };
         function successFn(response) {

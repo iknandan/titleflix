@@ -17,6 +17,7 @@
             titleService.findAllTitles()
                 .then(function (titles) {
                     titleVm.titles = titles;
+                    console.log(titleVm.titles);
                 },function (error) {
                     console.log(error);
                 });

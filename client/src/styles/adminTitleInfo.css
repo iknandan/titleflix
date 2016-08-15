@@ -6,3 +6,6 @@
     text-decoration: none;
 }
 
+.delete-tag{
+    cursor: pointer;
+}
