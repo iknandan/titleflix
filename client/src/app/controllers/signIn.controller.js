@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .controller('signInController',signInController);
 
-    signInController.$inject = ['userService','$location'];
-    function signInController(userService,$location) {
+    signInController.$inject = ['userService','$location','$localStorage'];
+    function signInController(userService,$location,$localStorage) {
         var signInVm = this;
         signInVm.loginUser = loginUser;
 
@@ -17,6 +17,7 @@
             userService.loginUser(signInVm.user)
                 .then(function (user) {
                     signInVm.user = user;
+                    $localStorage.userObject = user;
                     console.log(signInVm.user.role+' check')
                     if(signInVm.user.role === "user")
                     {

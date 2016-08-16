@@ -7,12 +7,13 @@
     angular.module('titleflix')
         .controller('titleInfoController',titleInfoController);
 
-    titleInfoController.$inject = ['titleService','commentService','userService','$routeParams','$location'];
-    function titleInfoController(titleService,commentService,userService,$routeParams,$location) {
+    titleInfoController.$inject = ['titleService','commentService','userService','$routeParams','$location','$localStorage','$route'];
+    function titleInfoController(titleService,commentService,userService,$routeParams,$location,$localStorage,$route) {
         var titleInfoVm = this;
+
         titleInfoVm.commentobj = {
             comment:"",
-            rating:"",
+            rating:2,
             userId:{
                 id: ""
             },
@@ -38,7 +39,11 @@
                 },function (error) {
                     console.log(error);
                 });
-            titleInfoVm.currentUser = userService.currentUser;
+            // titleInfoVm.currentUser = userService.currentUser;
+            console.log('titleInfoController');
+            console.log($localStorage.userObject);
+            titleInfoVm.currentUser = $localStorage.userObject;
+
         };
         titleInfoVm.hoveringOver = function(value) {
             titleInfoVm.overStar = value;
@@ -46,12 +51,13 @@
 
                 function postComment() {
                     titleInfoVm.commentobj.movieId.movieId = $routeParams.id;
-                    titleInfoVm.commentobj.userId.id = titleInfoVm.currentUser.userObj.id;
+                    titleInfoVm.commentobj.userId.id = titleInfoVm.currentUser.id;
                     commentService.postComment(titleInfoVm.commentobj)
                         .then(function (commentPosted) {
                             titleInfoVm.commentPosted = commentPosted;
                             titleInfoVm.commentobj.comment = [];
                             titleInfoVm.commentobj.rating = 2;
+                            $route.reload();
                         },function (error) {
                             console.log(error);
                         });

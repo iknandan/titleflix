@@ -5,7 +5,7 @@
             <aside>
                 <img class="thumbnail animated slideInLeft" ng-src="{{titleInfoVm.title.poster}}">
             </aside>
-            <h3 class="avg animated slideInLeft">Average Rating: {{titleInfoVm.title.averageRating | number}}</h3>
+            <h3 class="avg animated slideInLeft">Average Rating: {{titleInfoVm.title.averageRating}}</h3>
         </div>
         <div class="col-sm-6">
             <section>
@@ -74,7 +74,9 @@
                             <div class="comments">
                                 <div class="comment-row">
                                     <div class="comment-heading">{{review.userId.userName}}</div>
-                                    <div class="comment-heading">RatingValue :{{review.rating}}</div>
+                                    <span uib-rating ng-model="review.rating" max="5" class="stars">
+                        </span>
+                                    <!--<div class="comment-heading">RatingValue :{{review.rating}}</div>-->
                                 </div>
                                 <p class="user-comment">{{review.comment}}</p>
                                 <hr>

@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .service('userService',userService);
 
-    userService.$inject = ['$http','$q','$location'];
-    function userService($http,$q,$location) {
+    userService.$inject = ['$http','$q','$location','$localStorage'];
+    function userService($http,$q,$location,$localStorage) {
         var signUpVm = this;
         signUpVm.currentUser = {
             isLoggedIn: false,
@@ -33,8 +33,9 @@
                 });
         };
         function logOut(){
-            signUpVm.currentUser.isLoggedIn = false;
-            signUpVm.currentUser.userObj = {};
+            // signUpVm.currentUser.isLoggedIn = false;
+            // signUpVm.currentUser.userObj = {};
+            $localStorage.$reset();
             $location.path('/signin');
         }
         function successFn(response) {

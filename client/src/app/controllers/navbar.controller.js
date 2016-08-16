@@ -34,8 +34,6 @@
         };
         function logout() {
             userService.logOut()
-
-
         };
     };
 })();
