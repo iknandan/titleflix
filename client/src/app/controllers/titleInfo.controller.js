@@ -7,8 +7,8 @@
     angular.module('titleflix')
         .controller('titleInfoController',titleInfoController);
 
-    titleInfoController.$inject = ['titleService','commentService','userService','$routeParams','$location','$localStorage','$route'];
-    function titleInfoController(titleService,commentService,userService,$routeParams,$location,$localStorage,$route) {
+    titleInfoController.$inject = ['titleService','commentService','userService','$routeParams','$location','$localStorage','$route','Notification'];
+    function titleInfoController(titleService,commentService,userService,$routeParams,$location,$localStorage,$route,Notification) {
         var titleInfoVm = this;
         titleInfoVm.commentobj = {
             comment:"",
@@ -29,19 +29,15 @@
                 .then(function (title) {
                     titleInfoVm.title = title;
                 },function (error) {
-                    console.log(error);
+                    Notification.error('Error connecting to the server');
                 });
             commentService.conmmentsList($routeParams.id)
                 .then(function (comments) {
                     titleInfoVm.comments = comments;
                 },function (error) {
-                    console.log(error);
+                    Notification.error('Error connecting to the server');
                 });
-            // titleInfoVm.currentUser = userService.currentUser;
-            console.log('titleInfoController');
-            console.log($localStorage.userObject);
             titleInfoVm.currentUser = $localStorage.userObject;
-
         };
         titleInfoVm.hoveringOver = function(value) {
             titleInfoVm.overStar = value;
@@ -56,8 +52,9 @@
                     titleInfoVm.commentobj.comment = [];
                     titleInfoVm.commentobj.rating = 2;
                     $route.reload();
+                    Notification.success('posted comment successfully');
                 },function (error) {
-                    console.log(error);
+                    Notification.error('Error connecting to the server');
                 });
         };
 
@@ -68,7 +65,7 @@
                     titleInfoVm.deletedTitle = deletedTitle;
                     $location.path('/admin/browse');
                 },function (error) {
-                    console.log(error)
+                    Notification.error('Error connecting to the server');
                 });
         };
     };

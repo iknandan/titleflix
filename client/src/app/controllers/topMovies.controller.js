@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .controller('topMoviesController',topMoviesController);
 
-    topMoviesController.$inject = ['titleService'];
-    function topMoviesController(titleService){
+    topMoviesController.$inject = ['titleService','Notification'];
+    function topMoviesController(titleService,Notification){
         var topMoviesVm = this;
         init();
 
@@ -16,7 +16,7 @@
                 .then(function (topMovietitles) {
                     topMoviesVm.topMovietitles = topMovietitles;
                 },function (error) {
-                    console.log('error');
+                    Notification.error('Error connecting to the server');
                 });
         }
     };

@@ -6,8 +6,8 @@
 
     angular.module('titleflix')
         .controller('filterByController',filterByController);
-    filterByController.$inject = ['titleService','$routeParams'];
-    function filterByController(titleService,$routeParams) {
+    filterByController.$inject = ['titleService','$routeParams','Notification'];
+    function filterByController(titleService,$routeParams,Notification) {
 
         var filterByVm = this;
 
@@ -17,7 +17,7 @@
                 .then(function (filterTitles) {
                     filterByVm.filterTitles = filterTitles;
                 },function (error) {
-                    console.log(error);
+                    Notification.error('Error connecting to the server');
                 });
         };
     };

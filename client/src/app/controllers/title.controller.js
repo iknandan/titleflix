@@ -4,8 +4,8 @@
     angular.module('titleflix')
         .controller('titleController',titleController);
 
-    titleController.$inject = ['titleService'];
-    function titleController(titleService) {
+    titleController.$inject = ['titleService','Notification'];
+    function titleController(titleService,Notification) {
 
         var titleVm = this;
         titleVm.titles = [];
@@ -17,9 +17,8 @@
             titleService.findAllTitles()
                 .then(function (titles) {
                     titleVm.titles = titles;
-                    console.log(titleVm.titles);
                 },function (error) {
-                    console.log(error);
+                    Notification.error('Error connecting to the server');
                 });
         };
 

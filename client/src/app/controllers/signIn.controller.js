@@ -27,7 +27,6 @@
                     };
 
                 },function (error) {
-                    console.log(error);
                     Notification.error('Incorrect Credentials for the Email and Password');
                 });
         };

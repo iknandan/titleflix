@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .controller('sortByController',sortByController);
 
-    sortByController.$inject = ['titleService','$routeParams'];
-    function sortByController(titleService,$routeParams) {
+    sortByController.$inject = ['titleService','$routeParams','Notification'];
+    function sortByController(titleService,$routeParams,Notification) {
 
         var sortByVm = this;
         init();
@@ -17,7 +17,7 @@
                 .then(function(sortTitles){
                     sortByVm.sortTitles = sortTitles;
                 },function(error){
-                    console.log(error);
+                    Notification.error('Error connecting to the server');
                 });
         };
     };

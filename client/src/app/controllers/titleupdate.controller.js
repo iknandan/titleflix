@@ -49,7 +49,7 @@
                     titleUpdateVm.updatedTitle = [];
                     $location.path('/admin/browse');
                 },function (error) {
-                    console.log(error);
+                    Notification.error('Error connecting to the server');
                 });
         };
     };

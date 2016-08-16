@@ -17,7 +17,7 @@
                     signUpVm.newUser ={}
                     $location.path("/signin");
                 },function (error) {
-                    console.log(error)
+                    Notification.error('Email provided is already in use');
                 });
         };
     };
