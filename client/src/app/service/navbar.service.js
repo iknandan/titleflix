@@ -6,23 +6,23 @@
     angular.module('titleflix')
         .service('navBarService',navBarService);
 
-    navBarService.$inject = ['$http','$q'];
-    function navBarService($http,$q) {
+    navBarService.$inject = ['$http','$q','CONFIG'];
+    function navBarService($http,$q,CONFIG) {
        var navBarVm = this;
         navBarVm.genreList = genreList;
         navBarVm.yearList = yearList;
         navBarVm.typeList = typeList;
 
         function genreList() {
-            return $http.get('http://localhost:8080/titleflix/api/genre/viewAll')
+            return $http.get(CONFIG.API_HOST+'/genre/viewAll')
                 .then(successFn,errorFn);
         };
         function yearList() {
-            return $http.get('http://localhost:8080/titleflix/api/title/yearList')
+            return $http.get(CONFIG.API_HOST+'/title/yearList')
                 .then(successFn,errorFn);
         };
         function typeList() {
-            return $http.get('http://localhost:8080/titleflix/api/title/typeList')
+            return $http.get(CONFIG.API_HOST+'/title/typeList')
                 .then(successFn,errorFn);
         };
         function successFn(response) {

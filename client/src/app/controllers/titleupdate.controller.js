@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .controller('titleUpdateController',titleUpdateController);
 
-    titleUpdateController.$inject = ['titleService','$routeParams','$location'];
-    function titleUpdateController(titleService,$routeParams,$location){
+    titleUpdateController.$inject = ['titleService','$routeParams','$location','Notification'];
+    function titleUpdateController(titleService,$routeParams,$location,Notification){
         var titleUpdateVm = this;
         titleUpdateVm.updateTitle = updateTitle;
         console.log('titleUpdateController');
@@ -45,6 +45,7 @@
             titleService.updateTitle($routeParams.id,titleUpdateVm.title)
                 .then(function (updatedTitle) {
                     titleUpdateVm.updatedTitle = updatedTitle;
+                    Notification.success('Updated '+titleUpdateVm.updatedTitle.title+' Successfully');
                     titleUpdateVm.updatedTitle = [];
                     $location.path('/admin/browse');
                 },function (error) {

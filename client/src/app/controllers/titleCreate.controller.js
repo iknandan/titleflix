@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .controller('titleCreateController',titleCreateController);
 
-    titleCreateController.$inject = ['titleService','$location'];
-    function titleCreateController(titleService,$location){
+    titleCreateController.$inject = ['titleService','$location','Notification'];
+    function titleCreateController(titleService,$location,Notification){
         var titleCreateVm = this;
         titleCreateVm.createTitle = createTitle;
         function createTitle() {
@@ -35,6 +35,7 @@
             titleService.createTitle(titleCreateVm.newTitle)
                 .then(function (newTitle) {
                     titleCreateVm.newTitle = newTitle;
+                    Notification.success('New Title '+titleCreateVm.newTitle.title+' is created');
                     titleCreateVm.newTitle= [];
                     $location.path('/admin/browse');
                 },function (error) {

@@ -140,27 +140,27 @@
             </div>
             <div class="form-group">
                 <label for="genre[0].genre">Genre 1</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[0].genre" id="genre[0].genre" name="genre[0].genre" placeholder="Genre 1" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[0].genre" id="genre[0].genre" name="genre[0].genre" placeholder="Genre 1">
                 <!--<div ng-messages="createTitleForm.genre[0].genre".$error" class="error" ng-if="createTitleForm.genre[0].genre".$dirty">-->
                     <!--<p ng-message="required">This field cannot be empty</p>-->
                 <!--</div>-->
             </div>
             <div class="form-group">
                 <label for="genre[1].genre">Genre 2</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[1].genre" id="genre[1].genre" name="genre[1].genre" placeholder="Genre 2" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[1].genre" id="genre[1].genre" name="genre[1].genre" placeholder="Genre 2">
                 <!--<div ng-messages="createTitleForm.genre[1].genre.$error" class="error" ng-if="createTitleForm.genre[1].genre.$dirty">-->
                     <!--<p ng-message="required">This field cannot be empty</p>-->
                 <!--</div>-->
             </div>
             <div class="form-group">
                 <label for="genre[2].genre">Genre 3</label>
-                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[2].genre" name="genre[2].genre" id="genre[2].genre" placeholder="Genre 3" required>
+                <input type="text" class="form-control" ng-model="titleCreateVm.newTitle.genre[2].genre" name="genre[2].genre" id="genre[2].genre" placeholder="Genre 3">
                 <!--<div ng-messages="createTitleForm.genre[2].genre.$error" class="error" ng-if="createTitleForm.genre[2].genre.$dirty">-->
                     <!--<p ng-message="required">This field cannot be empty</p>-->
                 <!--</div>-->
             </div>
         </div>
-        <button type="submit" class="btn-default admin-button">Create</button>
+        <button type="submit" class="btn-default admin-button" ng-disabled="createTitleForm.$invalid">Create</button>
     </form>
 
 </div>

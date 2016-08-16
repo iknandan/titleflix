@@ -33,8 +33,6 @@
                     console.log(error);
                 });
             navBarVm.userName = $localStorage.userObject.userName;
-            console.log('NavBar')
-            console.log(navBarVm.userName);
         };
         function logout() {
             userService.logOut()

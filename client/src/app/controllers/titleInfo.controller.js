@@ -63,7 +63,7 @@
 
         function deleteTitle() {
             console.log('titleInfoController '+titleInfoVm.titleId);
-            titleService.deleteTitle(titleInfoVm.titleId)
+            titleService.deleteTitle($routeParams.id)
                 .then(function (deletedTitle) {
                     titleInfoVm.deletedTitle = deletedTitle;
                     $location.path('/admin/browse');

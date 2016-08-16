@@ -5,7 +5,7 @@
         <hr>
     </div>
     <section>
-        <article dir-paginate="title in sortByVm.sortTitles | itemsPerPage: 15">
+        <article dir-paginate="title in sortByVm.sortTitles | filter: navBarVm.searchTitle | itemsPerPage: 15">
             <a href="#/browse/{{title.movieId}}"><img class="upperja" ng-src="{{title.poster}}"></a>
             <div class="tooltiptext"><p>{{title.title}}</p> <p>Year: {{title.year}}</p><p>Language: {{title.language}}</p><p>Avg Rating: {{title.averageRating}}</p></div>
 

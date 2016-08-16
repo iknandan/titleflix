@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .service('userService',userService);
 
-    userService.$inject = ['$http','$q','$location','$localStorage'];
-    function userService($http,$q,$location,$localStorage) {
+    userService.$inject = ['$http','$q','$location','$localStorage','Notification','CONFIG'];
+    function userService($http,$q,$location,$localStorage,Notification,CONFIG) {
         var signUpVm = this;
         signUpVm.currentUser = {
             isLoggedIn: false,
@@ -17,11 +17,11 @@
         signUpVm.loginUser = loginUser;
         signUpVm.logOut = logOut;
         function createUser(newUser) {
-            return $http.post('http://localhost:8080/titleflix/api/user/signUp',newUser)
+            return $http.post(CONFIG.API_HOST+'/user/signUp',newUser)
                 .then(successFn, errorFn);
         };
         function loginUser(user) {
-            return $http.post('http://localhost:8080/titleflix/api/user/signIn',user)
+            return $http.post(CONFIG.API_HOST+'/user/signIn',user)
                 .then(function (response) {
                     signUpVm.currentUser.userObj = response.data;
                     signUpVm.currentUser.isLoggedIn = true;
@@ -33,9 +33,8 @@
                 });
         };
         function logOut(){
-            // signUpVm.currentUser.isLoggedIn = false;
-            // signUpVm.currentUser.userObj = {};
             $localStorage.$reset();
+            Notification.success('Logged Out Successfully');
             $location.path('/signin');
         }
         function successFn(response) {

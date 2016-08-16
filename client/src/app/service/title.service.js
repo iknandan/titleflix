@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .service('titleService',titleService);
 
-    titleService.$inject = ['$http','$q'];
-    function titleService($http,$q) {
+    titleService.$inject = ['$http','$q','CONFIG'];
+    function titleService($http,$q,CONFIG) {
 
         var titleVm = this;
 
@@ -26,43 +26,39 @@
 
         function findAllTitles() {
             console.log('title service');
-            return $http.get('http://localhost:8080/titleflix/api/title/viewAll').then(successFn,errorFn);
+            return $http.get(CONFIG.API_HOST+'/title/viewAll').then(successFn,errorFn);
         };
         function filterBy(basedOn,value) {
-            return $http.get('http://localhost:8080/titleflix/api/title/filterBy/' + basedOn + '/' + value)
+            return $http.get(CONFIG.API_HOST+'/title/filterBy/' + basedOn + '/' + value)
                 .then(successFn, errorFn);
         };
         function sortby(basedOn) {
-            return $http.get('http://localhost:8080/titleflix/api/title/sortBy/'+basedOn)
+            return $http.get(CONFIG.API_HOST+'/title/sortBy/'+basedOn)
                 .then(successFn,errorFn);
         };
         function titleInfo(id) {
-            return $http.get('http://localhost:8080/titleflix/api/title/viewTitleDetails/'+id)
+            return $http.get(CONFIG.API_HOST+'/title/viewTitleDetails/'+id)
                 .then(successFn,errorFn);
         };
-        // function conmmentsList(id) {
-        //     return $http.get('http://localhost:8080/titleflix/api/comment/viewReviews/'+id)
-        //         .then(successFn,errorFn);
-        // };
         function topRatedMovies(){
-            return $http.get('http://localhost:8080/titleflix/api/title/topRatedMovies')
+            return $http.get(CONFIG.API_HOST+'/title/topRatedMovies')
                 .then(successFn,errorFn);
         };
         function topratedSeries() {
-            return $http.get('http://localhost:8080/titleflix/api/title/topRatedSeries')
+            return $http.get(CONFIG.API_HOST+'/title/topRatedSeries')
                 .then(successFn, errorFn);
         };
         function deleteTitle(id) {
             console.log('serviceDelete-'+id);
-            return $http.delete('http://localhost:8080/titleflix/api/title/deleteTitle/'+id)
+            return $http.delete(CONFIG.API_HOST+'/title/deleteTitle/'+id)
                 .then(successFn,errorFn);
         };
         function createTitle(newTitle) {
-            return $http.post('http://localhost:8080/titleflix/api/title/createTitle',newTitle)
+            return $http.post(CONFIG.API_HOST+'/title/createTitle',newTitle)
                 .then(successFn,errorFn);
         };
         function updateTitle(id,title) {
-            return $http.put('http://localhost:8080/titleflix/api/title/updateTitle/'+id,title)
+            return $http.put(CONFIG.API_HOST+'/title/updateTitle/'+id,title)
                 .then(successFn,errorFn);
         };
         function successFn(response) {

@@ -2,14 +2,13 @@
     'use strict';
 
     angular
-        .module('titleflix',['ngRoute','angularUtils.directives.dirPagination','ngMessages','ngAnimate','ui.bootstrap','ngStorage'])
+        .module('titleflix',['ngRoute','angularUtils.directives.dirPagination','ngMessages','ngAnimate','ui.bootstrap','ngStorage','ui-notification'])
         .config(moduleConfig);
 
-    function moduleConfig($routeProvider) {
+    function moduleConfig($routeProvider,NotificationProvider) {
         $routeProvider
             .when('/home',{
                 templateUrl:'app/views/home.tmpl.html',
-
             })
             .when('/signin',{
                 templateUrl:'app/views/signin.tmpl.html',
@@ -94,6 +93,17 @@
             .otherwise({
                 redirectTo:'/home'
             })
+        NotificationProvider.setOptions({
+            delay: 2000,
+            startTop: 40,
+            startRight: 20,
+            verticalSpacing: 40,
+            horizontalSpacing: 20,
+            positionX: 'center',
+            positionY: 'top',
+            closeOnClick: true
+
+        });
 
     }
 

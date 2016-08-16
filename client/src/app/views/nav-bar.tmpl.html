@@ -32,7 +32,7 @@
                 </div>
             </li>
             <li class="dropdown sort">
-                <a class="dropdown-toggle animated bounceIn" href="#/browse"><span style="cursor:pointer">Sort By</span>
+                <a class="dropdown-toggle animated bounceIn"><span style="cursor:pointer">Sort By</span>
                     <span class="caret"></span></a>
                 <div class="dropdown-content">
                     <a href="#/sortBy/imdbRating">IMDB Rating</a>
@@ -46,7 +46,7 @@
         <div class="right-nav pull-right">
             <ul class="nav navbar-nav">
                 <li><span class="glyphicon glyphicon-search animated slideInLeft"></span>
-                    <input type="search" placeholder="Search  ..with Title">
+                    <input type="search" ng-model="navBarVm.searchTitle" placeholder="Search  ..with Title">
                 </li>
                 <li><span class="animated slideInLeft"><img src="https://secure.netflix.com/ffe/profiles/avatars_v2/32x32/PICON_025.png"></span></li>
                 <li class="dropdown sort"><span class="username animated slideInLeft">{{navBarVm.userName}}</span>
