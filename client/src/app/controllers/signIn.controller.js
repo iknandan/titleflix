@@ -18,7 +18,6 @@
                 .then(function (user) {
                     signInVm.user = user;
                     $localStorage.userObject = user;
-                    console.log(signInVm.user.role+' check')
                     if(signInVm.user.role === "user")
                     {
                         $location.path('/browse');

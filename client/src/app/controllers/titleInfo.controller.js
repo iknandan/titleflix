@@ -10,7 +10,6 @@
     titleInfoController.$inject = ['titleService','commentService','userService','$routeParams','$location','$localStorage','$route'];
     function titleInfoController(titleService,commentService,userService,$routeParams,$location,$localStorage,$route) {
         var titleInfoVm = this;
-
         titleInfoVm.commentobj = {
             comment:"",
             rating:2,
@@ -22,7 +21,6 @@
             }
         };
         titleInfoVm.max = 5;
-        titleInfoVm.currentUser = {};
         titleInfoVm.deleteTitle = deleteTitle;
         titleInfoVm.postComment = postComment;
         init();
@@ -49,19 +47,19 @@
             titleInfoVm.overStar = value;
         };
 
-                function postComment() {
-                    titleInfoVm.commentobj.movieId.movieId = $routeParams.id;
-                    titleInfoVm.commentobj.userId.id = titleInfoVm.currentUser.id;
-                    commentService.postComment(titleInfoVm.commentobj)
-                        .then(function (commentPosted) {
-                            titleInfoVm.commentPosted = commentPosted;
-                            titleInfoVm.commentobj.comment = [];
-                            titleInfoVm.commentobj.rating = 2;
-                            $route.reload();
-                        },function (error) {
-                            console.log(error);
-                        });
-                };
+        function postComment() {
+            titleInfoVm.commentobj.movieId.movieId = $routeParams.id;
+            titleInfoVm.commentobj.userId.id = titleInfoVm.currentUser.id;
+            commentService.postComment(titleInfoVm.commentobj)
+                .then(function (commentPosted) {
+                    titleInfoVm.commentPosted = commentPosted;
+                    titleInfoVm.commentobj.comment = [];
+                    titleInfoVm.commentobj.rating = 2;
+                    $route.reload();
+                },function (error) {
+                    console.log(error);
+                });
+        };
 
         function deleteTitle() {
             console.log('titleInfoController '+titleInfoVm.titleId);

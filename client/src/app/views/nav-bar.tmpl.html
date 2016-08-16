@@ -49,10 +49,10 @@
                     <input type="search" placeholder="Search  ..with Title">
                 </li>
                 <li><span class="animated slideInLeft"><img src="https://secure.netflix.com/ffe/profiles/avatars_v2/32x32/PICON_025.png"></span></li>
-                <li class="dropdown sort"><span class="username animated slideInLeft">nandan</span>
+                <li class="dropdown sort"><span class="username animated slideInLeft">{{navBarVm.userName}}</span>
                     <span class="glyphicon glyphicon-menu-down"></span>
                     <div class="dropdown-content">
-                        <a class="cursor-pointer" ng-click="navBarVm.logout()">Log Out</a>
+                        <a class="cursor" ng-click="navBarVm.logout()">Log Out</a>
                     </div>
                 </li>
 
