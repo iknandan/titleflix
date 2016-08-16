@@ -11,13 +11,13 @@
     function titleInfoController(titleService,commentService,userService,$routeParams,$location,$localStorage,$route,Notification) {
         var titleInfoVm = this;
         titleInfoVm.commentobj = {
-            comment:"",
-            rating:2,
-            userId:{
+            comment: "",
+            rating: 2,
+            userId: {
                 id: ""
             },
-            movieId:{
-                movieId:""
+            movieId: {
+                movieId: ""
             }
         };
         titleInfoVm.max = 5;
@@ -25,19 +25,27 @@
         titleInfoVm.postComment = postComment;
         init();
         function init() {
-            titleService.titleInfo($routeParams.id)
-                .then(function (title) {
-                    titleInfoVm.title = title;
-                },function (error) {
-                    Notification.error('Error connecting to the server');
-                });
-            commentService.conmmentsList($routeParams.id)
-                .then(function (comments) {
-                    titleInfoVm.comments = comments;
-                },function (error) {
-                    Notification.error('Error connecting to the server');
-                });
-            titleInfoVm.currentUser = $localStorage.userObject;
+            if (!($localStorage.userObject === undefined)){
+
+        titleService.titleInfo($routeParams.id)
+            .then(function (title) {
+                titleInfoVm.title = title;
+            }, function (error) {
+                Notification.error('Error connecting to the server');
+            });
+        commentService.conmmentsList($routeParams.id)
+            .then(function (comments) {
+                titleInfoVm.comments = comments;
+            }, function (error) {
+                Notification.error('Error connecting to the server');
+            });
+
+    }
+    else
+            {
+                Notification.error('Please provide your credentails');
+                $location.path('/signin');
+            }
         };
         titleInfoVm.hoveringOver = function(value) {
             titleInfoVm.overStar = value;
@@ -45,6 +53,7 @@
 
         function postComment() {
             titleInfoVm.commentobj.movieId.movieId = $routeParams.id;
+            titleInfoVm.currentUser =  userService.getUserObj($localStorage.userObject);
             titleInfoVm.commentobj.userId.id = titleInfoVm.currentUser.id;
             commentService.postComment(titleInfoVm.commentobj)
                 .then(function (commentPosted) {

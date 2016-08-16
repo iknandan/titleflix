@@ -6,8 +6,8 @@
     angular.module('titleflix')
         .service('titleService',titleService);
 
-    titleService.$inject = ['$http','$q','CONFIG'];
-    function titleService($http,$q,CONFIG) {
+    titleService.$inject = ['$http','$q','CONFIG','$localStorage'];
+    function titleService($http,$q,CONFIG,$localStorage) {
 
         var titleVm = this;
 
@@ -15,7 +15,7 @@
         titleVm.filterBy = filterBy;
         titleVm.sortby = sortby;
         titleVm.titleInfo = titleInfo;
-        // titleVm.conmmentsList = conmmentsList;
+        titleVm.objectToArray = objectToArray;
         titleVm.topRatedMovies = topRatedMovies;
         titleVm.topratedSeries = topratedSeries;
         titleVm.deleteTitle = deleteTitle;
@@ -36,6 +36,26 @@
             return $http.get(CONFIG.API_HOST+'/title/sortBy/'+basedOn)
                 .then(successFn,errorFn);
         };
+        function objectToArray(genreList) {
+
+            Object.size = function (genreList) {
+                var size = 0, key;
+                for (key in genreList) {
+                    if (genreList.hasOwnProperty(key)) size++;
+                }
+                return size;
+            };
+            // Get the size of an object
+            var size = Object.size(genreList);
+            var arr = [];
+            for (var i = 0; i < size; i++) {
+                if (!(genreList[i].isUndefined)) {
+                    arr[i] = genreList[i];
+                }
+            }
+            return arr;
+
+        };
         function titleInfo(id) {
             return $http.get(CONFIG.API_HOST+'/title/viewTitleDetails/'+id)
                 .then(successFn,errorFn);
@@ -54,6 +74,7 @@
                 .then(successFn,errorFn);
         };
         function createTitle(newTitle) {
+            $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.userObject;
             return $http.post(CONFIG.API_HOST+'/title/createTitle',newTitle)
                 .then(successFn,errorFn);
         };

@@ -4,8 +4,8 @@
     angular.module('titleflix')
         .controller('titleController',titleController);
 
-    titleController.$inject = ['titleService','Notification'];
-    function titleController(titleService,Notification) {
+    titleController.$inject = ['titleService','Notification','$localStorage','$location'];
+    function titleController(titleService,Notification,$localStorage,$location) {
 
         var titleVm = this;
         titleVm.titles = [];
@@ -13,6 +13,7 @@
         init();
 
         function init(){
+            if(!($localStorage.userObject ===  undefined)){
             console.log('title controller');
             titleService.findAllTitles()
                 .then(function (titles) {
@@ -20,8 +21,11 @@
                 },function (error) {
                     Notification.error('Error connecting to the server');
                 });
+            }
+            else{
+                $location.path('/signin');
+            }
         };
-
     };
 
 })();

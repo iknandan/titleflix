@@ -6,41 +6,36 @@
     angular.module('titleflix')
         .controller('titleCreateController',titleCreateController);
 
-    titleCreateController.$inject = ['titleService','$location','Notification'];
-    function titleCreateController(titleService,$location,Notification){
+    titleCreateController.$inject = ['titleService','$location','Notification','$localStorage','userService'];
+    function titleCreateController(titleService,$location,Notification,$localStorage,userService){
         var titleCreateVm = this;
         titleCreateVm.createTitle = createTitle;
+        titleCreateVm.user = "";
         function createTitle() {
-            var genreList = titleCreateVm.newTitle.genre;
-            Object.size = function(genreList) {
-                var size = 0, key;
-                for (key in genreList) {
-                    if (genreList.hasOwnProperty(key)) size++;
-                }
-                return size;
-            };
-            // Get the size of an object
-            var size = Object.size(genreList);
-            var arr = [];
-            for(var i=0;i<size;i++)
-            {
-                console.log(genreList[i]);
-                if(!(genreList[i].isUndefined)){
-                    arr[i]=genreList[i];
-                    console.log(arr[i]);
-                }
+
+            titleCreateVm.user =  userService.getUserObj($localStorage.userObject);
+
+            if (titleCreateVm.user.role === "admin") {
+
+                var genreList = titleCreateVm.newTitle.genre;
+                var arr =  titleService.objectToArray(genreList);
+                titleCreateVm.newTitle.genre = "";
+                titleCreateVm.newTitle.genre = arr;
+                titleService.createTitle(titleCreateVm.newTitle)
+                    .then(function (newTitle) {
+                        titleCreateVm.newTitle = newTitle;
+                        Notification.success('New Title ' + titleCreateVm.newTitle.title + ' is created');
+                        titleCreateVm.newTitle = [];
+                        $location.path('/admin/browse');
+                    }, function (error) {
+                        Notification.error('Error connecting to the server');
+                    });
             }
-            titleCreateVm.newTitle.genre = "";
-            titleCreateVm.newTitle.genre = arr;
-            titleService.createTitle(titleCreateVm.newTitle)
-                .then(function (newTitle) {
-                    titleCreateVm.newTitle = newTitle;
-                    Notification.success('New Title '+titleCreateVm.newTitle.title+' is created');
-                    titleCreateVm.newTitle= [];
-                    $location.path('/admin/browse');
-                },function (error) {
-                    Notification.error('Error connecting to the server');
-                });
+            else{
+                Notification.error('Sorry!! not authorized for this functionlity');
+            }
+
         };
+
     };
 })();
