@@ -1,11 +1,16 @@
 package io.titleflix.controller;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.titleflix.LoginResponse;
 import io.titleflix.entity.User;
 import io.titleflix.exception.IncorrectCredentials;
 import io.titleflix.exception.UserAlreadyExists;
@@ -29,10 +34,12 @@ public class UserController {
 	private UserService userService;
 	// This is a signIn functionality with a POST requestMethod used for use Login.
 	@RequestMapping(path = "/signIn", method = RequestMethod.POST, consumes = org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE, produces = org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public User signIn(@RequestBody User user)
+	public LoginResponse signIn(@RequestBody User user)
 			throws UserNotFound, IncorrectCredentials, ValidateEmailAndPassword, ValidEmail, ValidPassword {
 		User existing = userService.signIn(user);
-		return existing;
+		return new LoginResponse(Jwts.builder().setSubject(existing.getUserName())
+	            .claim("roles", existing).setIssuedAt(new Date())
+	            .signWith(SignatureAlgorithm.HS256, "secretkey").compact());
 	}
 
 	// This is a SignUp functionality used for the user Registeration.
