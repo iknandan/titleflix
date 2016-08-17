@@ -12,6 +12,7 @@
         signInVm.userObj = "";
         signInVm.loginUser = loginUser;
         function loginUser() {
+        console.log(signInVm.user);
             userService.loginUser(signInVm.user)
                 .then(function (user) {
                     signInVm.user = user;
