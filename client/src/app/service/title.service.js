@@ -23,7 +23,7 @@
 
 
         function findAllTitles() {
-            console.log('title service');
+            // console.log('title service');
             return $http.get(CONFIG.API_HOST+'/title/viewAll').then(successFn,errorFn);
         };
         function filterBy(basedOn,value) {
@@ -63,7 +63,7 @@
                 .then(successFn,errorFn);
         };
         function deleteTitle(id) {
-            console.log('serviceDelete-'+id);
+            // console.log('serviceDelete-'+id);
             return $http.delete(CONFIG.API_HOST+'/title/deleteTitle/'+id)
                 .then(successFn,errorFn);
         };

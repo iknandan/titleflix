@@ -11,8 +11,9 @@
         var signInVm = this;
         signInVm.userObj = "";
         signInVm.loginUser = loginUser;
+        //Authenticate User and gets the token from the server and stores it in the local storage
         function loginUser() {
-        console.log(signInVm.user);
+        // console.log(signInVm.user);
             userService.loginUser(signInVm.user)
                 .then(function (user) {
                     signInVm.user = user;

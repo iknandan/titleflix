@@ -12,9 +12,10 @@
 
         var topTitleVm = this;
         topTitleVm.titleType = $routeParams.type;
+        // Initialize the controller and gets the top rated titles
         init();
         function init() {
-            console.log($routeParams.type);
+            // console.log($routeParams.type);
             titleService.topRated($routeParams.type)
                 .then(function (topTitles) {
                     topTitleVm.topTitles = topTitles;

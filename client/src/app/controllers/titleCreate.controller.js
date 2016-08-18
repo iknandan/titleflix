@@ -11,6 +11,7 @@
         var titleCreateVm = this;
         titleCreateVm.createTitle = createTitle;
         titleCreateVm.user = "";
+        // Creates a new Title - functionality is authorized only for admin
         function createTitle() {
 
             titleCreateVm.user =  userService.getUserObj($localStorage.userObject);

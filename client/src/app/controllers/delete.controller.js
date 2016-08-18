@@ -3,18 +3,20 @@
  */
 (function () {
     'use strict';
+
     angular.module('titleflix')
         .controller('deleteController',deleteController);
+
     deleteController.$inject = ['titleService','$location','$routeParams','Notification','$localStorage','userService'];
     function deleteController(titleService,$location,$routeParams,Notification,$localStorage,userService) {
         var deleteVm = this;
         deleteVm.userObj = "";
         deleteVm.deleteTitle = deleteTitle;
         function deleteTitle() {
-
+            // check token and active functionality if role is admin
             deleteVm.userObj =  userService.getUserObj($localStorage.userObject);
 
-            if(ddeleteVm.userObj.role === "admin") {
+            if(deleteVm.userObj.role === "admin") {
 
                 titleService.deleteTitle($routeParams.id)
                     .then(function (deletedTitle) {

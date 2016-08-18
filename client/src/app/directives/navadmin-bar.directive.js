@@ -11,7 +11,7 @@
         var directive = {
             restrict:'E',
             templateUrl:'app/views/nav-admin.tmpl.html',
-            controller : 'navBarController',
+            controller : 'navBarAdminController',
             controllerAs : 'navBarVm'
         };
       return directive;

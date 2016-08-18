@@ -18,10 +18,10 @@
                 .then(successFn, errorFn);
         };
         function loginUser(user) {
-            console.log(user);
+            // console.log(user);
             return $http.post(CONFIG.API_HOST+'/user/signIn',user)
                 .then(function (response) {
-                    console.log(response.data.compact);
+                    // console.log(response.data.compact);
                     return response.data.compact;
                 }, function (response) {
                     return $q.reject('Error Text', response.statusText);

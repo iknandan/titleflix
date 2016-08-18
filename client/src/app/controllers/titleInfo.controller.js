@@ -23,6 +23,7 @@
         titleInfoVm.max = 5;
         titleInfoVm.deleteTitle = deleteTitle;
         titleInfoVm.postComment = postComment;
+        // Initialize the function when controller is called - gets all the information about title
         init();
         function init() {
             if (!($localStorage.userObject === undefined)){
@@ -33,6 +34,7 @@
             }, function (error) {
                 Notification.error('Error connecting to the server');
             });
+        // Gets the List of comments of a Title from the server
         commentService.conmmentsList($routeParams.id)
             .then(function (comments) {
                 titleInfoVm.comments = comments;
@@ -51,6 +53,7 @@
             titleInfoVm.overStar = value;
         };
 
+        // Posts the Reviews - comments and rating - and reloads the page.
         function postComment() {
             titleInfoVm.commentobj.movieId.movieId = $routeParams.id;
             titleInfoVm.currentUser =  userService.getUserObj($localStorage.userObject);
@@ -66,9 +69,9 @@
                     Notification.error('Error connecting to the server');
                 });
         };
-
+        // Deletes the Title
         function deleteTitle() {
-            console.log('titleInfoController '+titleInfoVm.titleId);
+            // console.log('titleInfoController '+titleInfoVm.titleId);
             titleService.deleteTitle($routeParams.id)
                 .then(function (deletedTitle) {
                     titleInfoVm.deletedTitle = deletedTitle;

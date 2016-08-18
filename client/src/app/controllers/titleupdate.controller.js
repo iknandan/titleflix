@@ -11,16 +11,19 @@
         var titleUpdateVm = this;
         titleUpdateVm.user = "";
         titleUpdateVm.updateTitle = updateTitle;
-        console.log('titleUpdateController');
+        // console.log('titleUpdateController');
+        // initialzie the functionality when the controller is called
         init();
         function init() {
             titleService.titleInfo($routeParams.id)
                 .then(function (title) {
                     titleUpdateVm.title = title;
                 },function (error) {
+                    Notification.error('Error from teh Server!!!');
                     console.log(error);
                 });
         };
+        // Updates the title - Authorized only for admin
         function updateTitle() {
 
             titleUpdateVm.user =  userService.getUserObj($localStorage.userObject);
