@@ -5,6 +5,7 @@
 **/.tmp
 **/.dist
 **/.sass-cache
+**/.recommenders
 
 **/.settings
 **/.metadata

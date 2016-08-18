@@ -1,0 +1,75 @@
+<nav-admin></nav-admin>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 ">
+            <aside>
+                <img class="thumbnail animated slideInLeft" ng-src="{{titleInfoVm.title.poster}}">
+            </aside>
+            <h3 class="avg animated slideInLeft">Average Rating: {{titleInfoVm.title.averageRating | number : 2}}</h3>
+        </div>
+        <div class="col-sm-6">
+            <section>
+                <h4 class="title  animated slideInDown">{{titleInfoVm.title.title}}</h4>
+                <span class="pull-right"><a href="http://www.imdb.com/title/{{titleInfoVm.title.imdbID}}/" target="_blank"><img class="imdb-poster" src="http://www.userlogos.org/files/logos/mafi0z/IMDb.png"></a></span>
+                <p><span class="defination">Plot: </span><em>{{titleInfoVm.title.plot}}</em></p>
+                <div class="col-sm-6 upperja">
+                    <article>
+                        <p><span class="defination">Year: </span><em>{{titleInfoVm.title.year}}</em></p>
+                        <p><span class="defination">Genre: </span><span ng-repeat="genreObj in titleInfoVm.title.genre"><em>{{genreObj.genre+', '}}</em></span></p>
+                        <p><span class="defination">Director: </span><em>{{titleInfoVm.title.director}}</em></p>
+                        <p><span class="defination">Writer: </span><em>{{titleInfoVm.title.writers}}</em></p>
+                        <p><span class="defination">Actors: </span><em>{{titleInfoVm.title.actors}}</em></p>
+                        <p><span class="defination">Rated: </span><em>{{titleInfoVm.title.rated}}</em></p>
+                        <p><span class="defination">Released: </span><em>{{titleInfoVm.title.released}}</em></p>
+                    </article>
+                </div>
+                <div class="col-sm-6 upperja">
+                    <article>
+                        <p><span class="defination">Language: </span><em>{{titleInfoVm.title.language}}</em></p>
+                        <p><span class="defination">Country: </span><em>{{titleInfoVm.title.country}}</em></p>
+                        <p><span class="defination">Awards: </span><em>{{titleInfoVm.title.awards}}</em></p>
+                        <p><span class="defination">Metascore: </span><em>{{titleInfoVm.title.metascore}}</em></p>
+                        <p><span class="defination">imdbRating: </span><em>{{titleInfoVm.title.imdbRating}}</em></p>
+                        <p><span class="defination">Runtime: </span><em>{{titleInfoVm.title.runtime}}</em></p>
+                        <p><span class="defination">imdbVotes: </span><em>{{titleInfoVm.title.imdbVotes}}</em></p>
+                        <p><span class="defination">imdbID: </span><em>{{titleInfoVm.title.imdbID}}</em></p>
+                        <p><span class="defination">Type: </span><em>{{titleInfoVm.title.type}}</em></p>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <div class="col-sm-3 animated slideInRight">
+            <div class="row">
+                <div class="modify pull-right animated zoomInUp">
+                    <p><a href="#/admin/update/{{titleInfoVm.title.movieId}}">UPDATE</a></p>
+                    <p class="delete-tag" ng-click="titleInfoVm.deleteTitle()"><a>DELETE</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container reviews upperja">
+        <h3>Comments and Ratings:</h3>
+        <hr>
+        <div class="row">
+            <ul>
+                <li>
+                    <div class="row" ng-repeat="review in titleInfoVm.comments">
+                        <div class="col-sm-1">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="comments">
+                                <div class="comment-row">
+                                    <div class="comment-heading">{{review.userId.userName}}</div>
+                                    <div class="comment-heading">RatingValue :{{review.rating}}</div>
+                                </div>
+                                <p class="user-comment">{{review.comment}}</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

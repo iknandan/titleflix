@@ -1,0 +1,65 @@
+.title{
+    padding-top:.5em ;
+    font-size: 4em;
+}
+.login-div{
+    background-image: url("https://assets.nflxext.com/ffe/siteui/acquisition/login/login-daredevil-1500x1000.2.jpg");
+    height: 52em;
+}
+.login-form{
+    background-color: #f3f3f3;
+    width: 34em;
+    height: 40em;
+    margin: 50px auto 30px auto;
+}
+.login-content{
+    padding-top: 10px;
+    padding-left: 8%;
+}
+.login-content h1{
+    padding-top: 10px;
+}
+.form-control{
+    width: 90%;
+    height: 45px;
+    border-radius: 0%;
+}
+.login-forgot-password{
+    text-align:right;
+    margin-right: 10%;
+    font-size: large;
+    color: blue;
+}
+.checkbox{
+    font-size: large;
+}
+label{
+    font-weight: normal;
+    margin-bottom: 0%;
+    font-size: medium;
+}
+.sign-in-btn{
+    background-color: #E50914;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 22em;
+    font-size: large;
+    cursor: pointer;
+}
+
+.sign-in-btn:hover{
+    color: white;
+    text-decoration: none;
+}
+.signUp-link{
+    margin-top: 2em;
+    font-size: 1.5em;
+}
+/*.login-button {*/
+    /*border-style: none;*/
+    /**/
+    /*padding: 0%;*/
+/*}*/

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="titleflix">
+<head>
+    <meta charset="UTF-8">
+    <title>TitleFLix</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Latest compiled and minified CSS -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/angular-ui-notification/dist/angular-ui-notification.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- endinject -->
+
+    <!-- vendor:css -->
+    <!-- endinject -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="styles/admincreate.css">
+    <link rel="stylesheet" href="styles/adminTitleInfo.css">
+    <link rel="stylesheet" href="styles/animate.css">
+    <link rel="stylesheet" href="styles/browse.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="styles/slideupside.css">
+    <link rel="stylesheet" href="styles/title.css">
+    <link rel="stylesheet" href="styles/titleInfo.css">
+    <!-- endinject -->
+
+    <!-- app:css -->
+    <!-- endinject -->
+
+</head>
+<body>
+<section ng-view></section>
+<!-- bower:js -->
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/angular-messages/angular-messages.js"></script>
+<script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
+<script src="/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/bower_components/ngstorage/ngStorage.js"></script>
+<script src="/bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+<!-- endinject -->
+
+<!-- vendor:js -->
+<!-- endinject -->
+
+<!-- inject:js -->
+<script src="app/app.js"></script>
+<script src="app/service/user.service.js"></script>
+<script src="app/service/title.service.js"></script>
+<script src="app/service/navbar.service.js"></script>
+<script src="app/service/comment.service.js"></script>
+<script src="app/directives/navigation-bar.directive.js"></script>
+<script src="app/directives/navadmin-bar.directive.js"></script>
+<script src="app/controllers/topTitle.controller.js"></script>
+<script src="app/controllers/titleupdate.controller.js"></script>
+<script src="app/controllers/titleInfo.controller.js"></script>
+<script src="app/controllers/titleCreate.controller.js"></script>
+<script src="app/controllers/title.controller.js"></script>
+<script src="app/controllers/sortBy.controller.js"></script>
+<script src="app/controllers/signup.controller.js"></script>
+<script src="app/controllers/signIn.controller.js"></script>
+<script src="app/controllers/navbarAdmin.controller.js"></script>
+<script src="app/controllers/navbar.controller.js"></script>
+<script src="app/controllers/filterBy.controller.js"></script>
+<script src="app/controllers/delete.controller.js"></script>
+<script src="app/app.constant.js"></script>
+<!-- endinject -->
+
+<!-- app:js -->
+<!-- endinject -->
+</body>
+</html>
