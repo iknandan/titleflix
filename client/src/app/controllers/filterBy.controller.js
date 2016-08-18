@@ -10,6 +10,8 @@
     function filterByController(titleService,$routeParams,Notification,$localStorage) {
 
         var filterByVm = this;
+        filterByVm.filterType = $routeParams.basedOn;
+        filterByVm.filterValue = $routeParams.value;
 
         init();
         function init(){

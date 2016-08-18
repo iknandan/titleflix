@@ -10,6 +10,7 @@
     function sortByController(titleService,$routeParams,Notification,$localStorage,$location) {
 
         var sortByVm = this;
+        sortByVm.sortBasedOn = $routeParams.basedOn;
         init();
         function init(){
             console.log('sortByController');

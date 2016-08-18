@@ -25,15 +25,15 @@
                 controller: 'titleController',
                 controllerAs: 'titleVm'
             })
-            .when('/topRatedMovies',{
-                templateUrl:'app/views/topMovies.tmpl.html',
-                controller: 'topMoviesController',
-                controllerAs: 'topMoviesVm'
+            .when('/topRated/:type',{
+            templateUrl:'app/views/topTitle.tmpl.html',
+            controller: 'topTitleController',
+            controllerAs: 'topTitleVm'
             })
-            .when('/topRatedSeries',{
-                templateUrl:'app/views/topSeries.tmpl.html',
-                controller: 'topSeriesController',
-                controllerAs: 'topSeriesVm'
+            .when('/admin/topRated/:type',{
+                templateUrl:'app/views/topTitleAdmin.tmpl.html',
+                controller: 'topTitleController',
+                controllerAs: 'topTitleVm'
             })
             .when('/sortBy/:basedOn',{
                 templateUrl:'app/views/sortBy.tmpl.html',
@@ -54,16 +54,6 @@
                 templateUrl:'app/views/titlesAdmin.tmpl.html',
                 controller: 'titleController',
                 controllerAs: 'titleVm'
-            })
-            .when('/admin/topRatedMovies',{
-                templateUrl:'app/views/topMoviesAdmin.tmpl.html',
-                controller: 'topMoviesController',
-                controllerAs: 'topMoviesVm'
-            })
-            .when('/admin/topRatedSeries',{
-                templateUrl:'app/views/topSeriesAdmin.tmpl.html',
-                controller: 'topSeriesController',
-                controllerAs: 'topSeriesVm'
             })
             .when('/admin/sortBy/:basedOn',{
                 templateUrl:'app/views/sortByAdmin.tmpl.html',

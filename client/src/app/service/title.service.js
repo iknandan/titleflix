@@ -16,12 +16,10 @@
         titleVm.sortby = sortby;
         titleVm.titleInfo = titleInfo;
         titleVm.objectToArray = objectToArray;
-        titleVm.topRatedMovies = topRatedMovies;
-        titleVm.topratedSeries = topratedSeries;
         titleVm.deleteTitle = deleteTitle;
         titleVm.createTitle = createTitle;
         titleVm.updateTitle = updateTitle;
-
+        titleVm.topRated = topRated;
 
 
         function findAllTitles() {
@@ -56,17 +54,13 @@
             return arr;
 
         };
+        function topRated(type) {
+            return $http.get(CONFIG.API_HOST+'/title/topRated/'+type)
+                .then(successFn,errorFn);
+        }
         function titleInfo(id) {
             return $http.get(CONFIG.API_HOST+'/title/viewTitleDetails/'+id)
                 .then(successFn,errorFn);
-        };
-        function topRatedMovies(){
-            return $http.get(CONFIG.API_HOST+'/title/topRatedMovies')
-                .then(successFn,errorFn);
-        };
-        function topratedSeries() {
-            return $http.get(CONFIG.API_HOST+'/title/topRatedSeries')
-                .then(successFn, errorFn);
         };
         function deleteTitle(id) {
             console.log('serviceDelete-'+id);
